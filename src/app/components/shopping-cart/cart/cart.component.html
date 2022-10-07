@@ -1,0 +1,15 @@
+<div class="card filters">
+    <div class="card-header">
+        <strong>My Cart</strong>
+    </div>
+<div *ngIf="cartItems.length === 0" class="alert alert-info">Cart is Emplty!</div>
+<ul *ngIf="cartItems.length > 0" class="list-group">
+    <li class="list-group-item" *ngFor="let item of cartItems">
+        <app-cart-item [cartItem]="item"></app-cart-item>
+    </li>
+
+    <li class="list-group-item active">
+        <strong>Total : {{ cartTotal | currency:'INR'}}</strong>
+    </li>
+</ul>
+</div>
