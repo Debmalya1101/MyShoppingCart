@@ -1,4 +1,55 @@
-<p>register works!</p>
-<p>
-    <a [routerLink]="['/login']">Login</a>
-</p>
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <div class="guest-form-card card">
+            <div class="card-header text-center">
+                <h2>Register Here</h2>
+            </div>
+            <div class="card-body">
+                <form #registrationForm="ngForm" (ngSubmit)="registerUser()">
+                    <!-- <div [class.d-none]="msg.status==500" class="alert alert-danger">{{msg.message}}</div> -->
+                    <div *ngIf="msg.length>0" class="alert alert-info text-center">{{msg}}</div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input id="email" name="email" type="email" class="form-control" [(ngModel)]="user.emailId" required pattern="[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-zA-Z]{2,4}"
+                        #email="ngModel"
+                        [class.is-invalid]="email.invalid && email.touched"
+                        >
+                        <!-- <small class="text-danger" [class.d-none]="email.valid || email.untouched">Email Id is required field</small> -->
+                        <div *ngIf="email.errors && (email.invalid && email.touched)">
+                            <small class="text-danger" *ngIf="email.errors?.['required']">Email Id is required field</small>
+                            <small class="text-danger" *ngIf="email.errors?.['pattern']">Enter valid Email ID</small>
+                        </div>
+                    </div><br>
+
+                    <div class="form-group">
+                        <label for="username">UserName</label>
+                        <input id="username" name="username" type="text" class="form-control" [(ngModel)]="user.userName" required #username="ngModel"
+                        [class.is-invalid]="username.invalid && username.touched"
+                        >
+                        <small class="text-danger" [class.d-none]="username.valid || username.untouched">User Name is required field</small>
+                    </div><br>
+        
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input id="password" name="password" type="password" class="form-control" [(ngModel)]="user.password" required #password="ngModel"
+                        [class.is-invalid]="password.invalid && password.touched"
+                        >
+                        <small class="text-danger" [class.d-none]="password.valid || password.untouched">Password is required field</small>
+                    </div><br>
+
+                    <div class="form-group">
+                        <label for="cpassword">Confirm Password</label>
+                        <input id="cpassword" name="cpassword" type="password" class="form-control" (ngModel)="user.password" required #cpassword="ngModel"
+                        [class.is-invalid]="cpassword.invalid && cpassword.touched"
+                        >
+                        <small class="text-danger" [class.d-none]="(password.value == cpassword.value) || password.untouched">Password & Confirm Password must match</small>
+                    </div><br>
+
+        
+                    <button [disabled]="registrationForm.form.invalid" type="submit" class="btn btn-primary w-100">Register</button>
+                </form>
+                <small class="float-end">Existing User? <a [routerLink]="['/login']">Login Here</a></small>
+            </div>
+        </div>
+    </div>
+</div>

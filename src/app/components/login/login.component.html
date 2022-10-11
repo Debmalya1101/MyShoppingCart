@@ -5,15 +5,27 @@
                 <h2>Login Here</h2>
             </div>
             <div class="card-body">
-                <form>
+                <form #loginForm="ngForm" (ngSubmit)="loginUser()">
+                    <div *ngIf="msg.length>0" class="alert alert-danger">{{msg}}</div>
                     <div class="form-group">
-                        <label for="username">Username</label>
-                        <input id="username" class="form-control">
+                        <label for="email">Email</label>
+                        <input id="email" name="email" type="email" class="form-control" [(ngModel)]="user.emailId" required pattern="[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-zA-Z]{2,4}"
+                        #email="ngModel"
+                        [class.is-invalid]="email.invalid && email.touched"
+                        >
+                        <!-- <small class="text-danger" [class.d-none]="email.valid || email.untouched">Email Id is required field</small> -->
+                        <div *ngIf="email.errors && (email.invalid && email.touched)">
+                            <small class="text-danger" *ngIf="email.errors?.['required']">Email Id is required field</small>
+                            <small class="text-danger" *ngIf="email.errors?.['pattern']">Enter valid Email ID</small>
+                        </div>
                     </div><br>
         
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input id="password" type="password" class="form-control">
+                        <input id="password" name="password" type="password" class="form-control" [(ngModel)]="user.password" required #password="ngModel"
+                        [class.is-invalid]="password.invalid && password.touched"
+                        >
+                        <small class="text-danger" [class.d-none]="password.valid || password.untouched">Password is required field</small>
                     </div><br>
 
                     <div class="form-group">
@@ -21,8 +33,9 @@
                         <label class="ms-1 mb-3" for="remember">Remember Me</label>
                     </div>
         
-                    <button class="btn btn-primary w-100">Login</button>
+                    <button [disabled]="loginForm.form.invalid" type="submit" class="btn btn-primary w-100">Login</button>
                 </form>
+                <small class="float-end">New User? <a [routerLink]="['/register']">Register Here</a></small>
             </div>
         </div>
     </div>
