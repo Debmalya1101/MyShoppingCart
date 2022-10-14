@@ -1,3 +1,5 @@
+import { User } from './../../../../models/user';
+import { RegistrationService } from 'src/app/services/registration.service';
 import { WishlistService } from './../../../../services/wishlist.service';
 import { Component, OnInit, Input } from '@angular/core';
 
@@ -17,9 +19,12 @@ export class ProductItemComponent implements OnInit {
   @Input()
   addedToWishlist!: boolean;
 
+  u!:User
+
   constructor(private msg:MessengerService,
               private cartService:CartService,
-              private wishlistService:WishlistService
+              private wishlistService:WishlistService,
+              private regservice:RegistrationService
     ) { }
 
   ngOnInit(): void {
@@ -27,8 +32,12 @@ export class ProductItemComponent implements OnInit {
 
   handleAddtocart(){
     //console.log(this.productItem);
-    this.cartService.addProductToCart(this.productItem).subscribe();
-    this.msg.sendMsg(this.productItem);
+    console.log(JSON.parse(localStorage.getItem('user')!))
+    this.u=JSON.parse(localStorage.getItem('user')!)
+    this.cartService.addProductToCart(this.productItem, this.u).subscribe(data=>{
+      this.msg.sendMsg(this.productItem);
+    });
+    console.log(this.regservice.loggedInUser)
   }
 
   handleAddToWishlist(){

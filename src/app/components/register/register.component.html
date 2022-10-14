@@ -1,4 +1,5 @@
-<div class="row">
+<div class="container">
+<div class="row mt-5">
     <div class="col-md-4 offset-md-4">
         <div class="guest-form-card card">
             <div class="card-header text-center">
@@ -48,8 +49,9 @@
         
                     <button [disabled]="registrationForm.form.invalid" type="submit" class="btn btn-primary w-100">Register</button>
                 </form>
-                <small class="float-end">Existing User? <a [routerLink]="['/login']">Login Here</a></small>
+                <small class="float-end">Existing User? <a class="text-decoration-none" [routerLink]="['/login']">Login Here</a></small>
             </div>
         </div>
     </div>
+</div>
 </div>

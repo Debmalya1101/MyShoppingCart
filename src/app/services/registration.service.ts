@@ -8,6 +8,8 @@ import { User } from '../models/user';
 })
 export class RegistrationService {
 
+  loggedInUser!:User
+
   constructor(private http : HttpClient) { }
 
   public loginUserFromRemote(user:User):Observable<any>{

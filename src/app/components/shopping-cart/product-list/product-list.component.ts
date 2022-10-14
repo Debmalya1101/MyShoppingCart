@@ -30,10 +30,7 @@ export class ProductListComponent implements OnInit {
     this.productService.getProducts().subscribe((data)=>{
 
         this.productList=data;
-        console.log(this.productList);
-        // for(let i=0;i<this.productList.length;i++){
-        //   console.log(this.productList[i].id)
-        // }
+        // console.log(this.productList);
 
       });
     }
@@ -41,7 +38,7 @@ export class ProductListComponent implements OnInit {
     loadWishlist(){
       this.wishlistService.getWishlist().subscribe(data=>{
         data.forEach((w:any)=>this.wishlist.push(w.productId));
-        console.log(this.wishlist)
+        //console.log(this.wishlist)
       })
     }
 

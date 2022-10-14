@@ -3,8 +3,8 @@
     <div class="card-body">
       <p class="card-text">
         <strong>{{productItem.name}}</strong>
-        <i *ngIf="addedToWishlist" class="fas fa-heart float-right" (click)="handleRemoveFromWishlist()"></i>
-        <i *ngIf="!addedToWishlist" class="far fa-heart float-right" (click)="handleAddToWishlist()"></i>
+        <i *ngIf="addedToWishlist" class="fas fa-heart float-end" (click)="handleRemoveFromWishlist()"></i>
+        <i *ngIf="!addedToWishlist" class="far fa-heart float-end" (click)="handleAddToWishlist()"></i>
       </p>
       <p class="card-text">{{productItem.description}}</p>
       <p class="card-text">
