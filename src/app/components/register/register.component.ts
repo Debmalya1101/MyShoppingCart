@@ -31,7 +31,7 @@ export class RegisterComponent implements OnInit {
       },
       error=>{
         //this.msg=error.error;
-        this.msg='user already exists';
+        this.msg='User already exists! Go to the Login page.';
       }
     )
   }

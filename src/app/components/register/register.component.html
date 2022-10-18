@@ -1,17 +1,20 @@
-<div class="container">
-<div class="row mt-5">
-    <div class="col-md-4 offset-md-4">
-        <div class="guest-form-card card">
-            <div class="card-header text-center">
-                <h2>Register Here</h2>
-            </div>
-            <div class="card-body">
+<div class="container-fluid ps-md-0">
+    <div class="row g-0">
+      <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
+      <div class="col-md-8 col-lg-6 bg-secondary bg-opacity-10">
+        <div class="login d-flex align-items-center py-5">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-9 col-lg-8 mx-auto">
+                <h3 class="login-heading mb-4">Create Account</h3>
+  
+                <!-- Sign In Form -->
                 <form #registrationForm="ngForm" (ngSubmit)="registerUser()">
                     <!-- <div [class.d-none]="msg.status==500" class="alert alert-danger">{{msg.message}}</div> -->
                     <div *ngIf="msg.length>0" class="alert alert-info text-center">{{msg}}</div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input id="email" name="email" type="email" class="form-control" [(ngModel)]="user.emailId" required pattern="[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-zA-Z]{2,4}"
+                        <input id="email" name="email" type="email" placeholder="example@example.com" class="form-control" [(ngModel)]="user.emailId" required pattern="[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-zA-Z]{2,4}"
                         #email="ngModel"
                         [class.is-invalid]="email.invalid && email.touched"
                         >
@@ -24,7 +27,7 @@
 
                     <div class="form-group">
                         <label for="username">UserName</label>
-                        <input id="username" name="username" type="text" class="form-control" [(ngModel)]="user.userName" required #username="ngModel"
+                        <input id="username" name="username" type="text" placeholder="example123" class="form-control" [(ngModel)]="user.userName" required #username="ngModel"
                         [class.is-invalid]="username.invalid && username.touched"
                         >
                         <small class="text-danger" [class.d-none]="username.valid || username.untouched">User Name is required field</small>
@@ -50,8 +53,10 @@
                     <button [disabled]="registrationForm.form.invalid" type="submit" class="btn btn-primary w-100">Register</button>
                 </form>
                 <small class="float-end">Existing User? <a class="text-decoration-none" [routerLink]="['/login']">Login Here</a></small>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
-</div>
-</div>
+  </div>

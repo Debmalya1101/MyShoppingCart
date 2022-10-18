@@ -33,7 +33,6 @@ export class CartComponent implements OnInit {
   handleSupscription(){
     this.msg.getMsg().subscribe((product:any)=>{
       this.user=JSON.parse(localStorage.getItem('user')!)
-      console.log(this.user)
       this.loadCartItems();
     })
   }
@@ -41,7 +40,6 @@ export class CartComponent implements OnInit {
   loadCartItems(){
     this.cartService.getCartItems(this.user).subscribe((data)=>{
       this.cartItems=data;
-      console.log(this.cartItems)
       this.cartTotal=0
 
       this.cartItems.forEach(c=>{

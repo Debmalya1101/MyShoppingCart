@@ -20,14 +20,16 @@ export class CartService {
     // let resp= this.http.get<CartItem[]>("http://localhost:8080/cartitems")
     // resp.subscribe(cart => cart.forEach(p => this.cartItems.push(p)));
     // return this.cartItems
-    console.log(user)
     return this.http.get<CartItem[]>("http://localhost:8080/cartitems/"+user.id)
   }
 
   addProductToCart(product:Product, user:User):Observable<Object>{
     //console.log(product)
-    console.log(user)
     return this.http.post<Object>("http://localhost:8080/cart/"+user.id,product);
 
+  }
+
+  removeProductFromCart(cart:CartItem,user:User):Observable<Object>{
+    return this.http.delete<Object>("http://localhost:8080/cart/"+cart.productId+"/"+user.id);
   }
 }

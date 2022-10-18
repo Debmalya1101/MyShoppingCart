@@ -37,7 +37,6 @@ export class ProductItemComponent implements OnInit {
     this.cartService.addProductToCart(this.productItem, this.u).subscribe(data=>{
       this.msg.sendMsg(this.productItem);
     });
-    console.log(this.regservice.loggedInUser)
   }
 
   handleAddToWishlist(){
