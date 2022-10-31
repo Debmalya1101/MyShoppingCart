@@ -1,3 +1,4 @@
+import { BuyNowComponent } from './components/buy-now/buy-now.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { NgModule } from "@angular/core";
@@ -10,6 +11,7 @@ const routes : Routes = [
     {path:'login', component:LoginComponent},
     {path:'register', component:RegisterComponent},
     {path:'shop', component:ShoppingCartComponent},
+    {path:'buy', component:BuyNowComponent},
     {path:'**', component:PageNotFoundComponent}
 ]
 

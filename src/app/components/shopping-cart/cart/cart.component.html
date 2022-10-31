@@ -2,18 +2,37 @@
     <div class="card-header">
         <strong>My Cart</strong>
     </div>
-<div *ngIf="cartItems.length === 0" class="alert alert-info">Cart is Emplty!</div>
-<ul *ngIf="cartItems.length > 0" class="list-group">
-    <li class="list-group-item" *ngFor="let item of cartItems">
-        <app-cart-item [cartItem]="item"></app-cart-item>
-    </li>
-
+<div *ngIf="cartItems.length === 0" class="mty">Cart is Emplty!</div>
+<div *ngIf="cartItems.length > 0" class="cnt">
+    <ul class="list-group">
+        <li class="list-group-item" *ngFor="let item of cartItems">
+            <app-cart-item [cartItem]="item"></app-cart-item>
+        </li>
+    </ul>  
+</div>
+<ul class="list-group" *ngIf="cartItems.length > 0">
     <li class="list-group-item active">
         <strong>Total : {{ cartTotal | currency:'INR'}}</strong>
     </li>
-
-    <div class="card-footer text-center bg-dark text-white">
-    <a class="text-decoration-none text-warning" [routerLink]="['/shop']"><strong>Buy Now</strong></a>
-    </div>
 </ul>
+
+<div class="card-footer text-center bg-dark text-white" *ngIf="cartItems.length > 0">
+    <a class="text-decoration-none text-warning" [routerLink]="['/buy']"><strong>Buy Now</strong></a>
+</div>
+</div>
+
+<br>
+<div class="card filters">
+    <div class="card-header">
+        <strong>My WishList</strong>
+    </div>
+    <div *ngIf="wishlist.length === 0" class="wmty">Wishlist is Emplty!</div>
+    <div *ngIf="wishlist.length > 0" class="wnt">
+        <ul class="list-group">
+            <li class="list-group-item" *ngFor="let item of wishlist">
+                <strong>Product : </strong>{{item.name}}<br>
+                <strong>Price : </strong>{{ item.price | currency:'INR'}}
+            </li>
+        </ul>  
+    </div>
 </div>

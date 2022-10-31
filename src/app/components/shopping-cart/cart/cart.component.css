@@ -1,0 +1,26 @@
+.cnt{
+    height: 28vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+}
+
+.mty{
+    height: 38vh;
+    text-align: center;
+    padding-top: 140px;
+    font-weight: bold;
+}
+
+.wmty{
+    height: 35vh;
+    text-align: center;
+    padding-top: 140px;
+    font-weight: bold;
+}
+.wnt{
+    height: 35vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+}

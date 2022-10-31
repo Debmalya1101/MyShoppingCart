@@ -1,3 +1,5 @@
+import { Wishlist } from './../../../models/wishlist';
+import { WishlistService } from './../../../services/wishlist.service';
 import { User } from './../../../models/user';
 import { RegistrationService } from 'src/app/services/registration.service';
 import { CartItem } from './../../../models/cart-item';
@@ -14,13 +16,15 @@ import { CartService } from 'src/app/services/cart.service';
 export class CartComponent implements OnInit {
 
   cartItems:CartItem[]=[];
+  wishlist:Wishlist[]=[];
 
   cartTotal=0
   user!:User
 
   constructor(private msg:MessengerService,
               private cartService:CartService,
-              private regservice:RegistrationService
+              private regservice:RegistrationService,
+              private wishlistService:WishlistService
     
     ) { }
 
@@ -28,12 +32,14 @@ export class CartComponent implements OnInit {
     this.user=JSON.parse(localStorage.getItem('user')!)
     this.handleSupscription();
     this.loadCartItems();
+    this.loadWishList();
   }
 
   handleSupscription(){
     this.msg.getMsg().subscribe((product:any)=>{
       this.user=JSON.parse(localStorage.getItem('user')!)
       this.loadCartItems();
+      this.loadWishList();
     })
   }
 
@@ -45,6 +51,13 @@ export class CartComponent implements OnInit {
       this.cartItems.forEach(c=>{
         this.cartTotal+= c.price*c.qty;
       })
+    })
+  }
+
+  loadWishList(){
+    this.wishlistService.getWishlist().subscribe(data=>{
+      this.wishlist=data;
+      console.log(this.wishlist);
     })
   }
 

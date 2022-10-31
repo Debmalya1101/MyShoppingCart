@@ -42,12 +42,14 @@ export class ProductItemComponent implements OnInit {
   handleAddToWishlist(){
     this.wishlistService.addToWishlist(this.productItem).subscribe(()=>{
       this.addedToWishlist=true
+      this.msg.sendMsg(this.productItem);
     })
   }
 
   handleRemoveFromWishlist(){
     this.wishlistService.removeFromWishList(this.productItem).subscribe(()=>{
       this.addedToWishlist=false
+      this.msg.sendMsg(this.productItem);
     })
   }
 
