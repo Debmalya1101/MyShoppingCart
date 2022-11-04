@@ -40,14 +40,16 @@ export class ProductItemComponent implements OnInit {
   }
 
   handleAddToWishlist(){
-    this.wishlistService.addToWishlist(this.productItem).subscribe(()=>{
+    this.u=JSON.parse(localStorage.getItem('user')!)
+    this.wishlistService.addToWishlist(this.productItem,this.u).subscribe(()=>{
       this.addedToWishlist=true
       this.msg.sendMsg(this.productItem);
     })
   }
 
   handleRemoveFromWishlist(){
-    this.wishlistService.removeFromWishList(this.productItem).subscribe(()=>{
+    this.u=JSON.parse(localStorage.getItem('user')!)
+    this.wishlistService.removeFromWishList(this.productItem,this.u).subscribe(()=>{
       this.addedToWishlist=false
       this.msg.sendMsg(this.productItem);
     })

@@ -1,3 +1,4 @@
+import { User } from 'src/app/models/user';
 import { WishlistService } from './../../../services/wishlist.service';
 import { Product } from './../../../models/product';
 import { Component, OnInit } from '@angular/core';
@@ -13,6 +14,7 @@ export class ProductListComponent implements OnInit {
 
   productList:Product[]=[]
   wishlist:number[]=[]
+  user!:User
 
   constructor(private productService:ProductService,
               private wishlistService:WishlistService
@@ -36,7 +38,8 @@ export class ProductListComponent implements OnInit {
     }
 
     loadWishlist(){
-      this.wishlistService.getWishlist().subscribe(data=>{
+      this.user=JSON.parse(localStorage.getItem('user')!)
+      this.wishlistService.getWishlist(this.user).subscribe(data=>{
         data.forEach((w:any)=>this.wishlist.push(w.productId));
         //console.log(this.wishlist)
       })

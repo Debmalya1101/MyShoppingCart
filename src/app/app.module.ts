@@ -18,6 +18,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { PageNotFoundComponent } from './components/shared/page-not-found/page-not-found.component';
 import { FormsModule } from '@angular/forms';
 import { BuyNowComponent } from './components/buy-now/buy-now.component';
+import { PaymentsuccessComponent } from './components/buy-now/paymentsuccess/paymentsuccess.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { BuyNowComponent } from './components/buy-now/buy-now.component';
     LoginComponent,
     RegisterComponent,
     PageNotFoundComponent,
-    BuyNowComponent
+    BuyNowComponent,
+    PaymentsuccessComponent
   ],
   imports: [
     BrowserModule,

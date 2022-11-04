@@ -1,3 +1,4 @@
+import { User } from 'src/app/models/user';
 import { Wishlist } from './../models/wishlist';
 import { Observable } from 'rxjs';
 import { Product } from 'src/app/models/product';
@@ -11,15 +12,15 @@ export class WishlistService {
 
   constructor(private http:HttpClient) { }
 
-  getWishlist():Observable<Wishlist[]>{
-    return this.http.get<Wishlist[]>("http://localhost:8080/wishlist")
+  getWishlist(user:User):Observable<Wishlist[]>{
+    return this.http.get<Wishlist[]>("http://localhost:8080/wishlist/"+user.id);
   }
 
-  addToWishlist(product:Product){
-    return this.http.post("http://localhost:8080/wishlist",product);
+  addToWishlist(product:Product,user:User){
+    return this.http.post("http://localhost:8080/wishlist/"+user.id,product);
   }
 
-  removeFromWishList(product:Product){
-    return this.http.delete("http://localhost:8080/wishlist/"+product.id)
+  removeFromWishList(product:Product,user:User){
+    return this.http.delete("http://localhost:8080/wishlist/"+product.id+"/"+user.id);
   }
 }

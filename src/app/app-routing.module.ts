@@ -1,3 +1,4 @@
+import { PaymentsuccessComponent } from './components/buy-now/paymentsuccess/paymentsuccess.component';
 import { BuyNowComponent } from './components/buy-now/buy-now.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
@@ -12,6 +13,7 @@ const routes : Routes = [
     {path:'register', component:RegisterComponent},
     {path:'shop', component:ShoppingCartComponent},
     {path:'buy', component:BuyNowComponent},
+    {path:'paysuccess', component:PaymentsuccessComponent},
     {path:'**', component:PageNotFoundComponent}
 ]
 

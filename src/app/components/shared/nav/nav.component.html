@@ -6,6 +6,7 @@
       <a class="me-3 py-2 text-white text-decoration-none" href="#">Enterprise</a>
       <a class="me-3 py-2 text-white text-decoration-none" href="#">Support</a>
       <a class="me-3 py-2 text-white text-decoration-none" href="#">Pricing</a>
+      <a class="me-3 py-2 text-white text-decoration-none"><i class="fa fa-user-circle" aria-hidden="true">{{user.userName}}</i></a>
       <a class="me-3 py-2 text-white text-decoration-none" [routerLink]="['/login']" (click)="loggedOutUser()"><i class="fa fa-sign-out"></i> Logout</a>
     </nav>
     <!-- <a class="btn btn-outline-primary" [routerLink]="['/register']">Sign Up</a>
