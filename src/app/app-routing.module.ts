@@ -1,3 +1,4 @@
+
 import { PaymentsuccessComponent } from './components/buy-now/paymentsuccess/paymentsuccess.component';
 import { BuyNowComponent } from './components/buy-now/buy-now.component';
 import { RegisterComponent } from './components/register/register.component';

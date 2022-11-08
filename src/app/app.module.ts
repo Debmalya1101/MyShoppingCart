@@ -19,6 +19,8 @@ import { PageNotFoundComponent } from './components/shared/page-not-found/page-n
 import { FormsModule } from '@angular/forms';
 import { BuyNowComponent } from './components/buy-now/buy-now.component';
 import { PaymentsuccessComponent } from './components/buy-now/paymentsuccess/paymentsuccess.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+
 
 @NgModule({
   declarations: [
@@ -36,13 +38,14 @@ import { PaymentsuccessComponent } from './components/buy-now/paymentsuccess/pay
     RegisterComponent,
     PageNotFoundComponent,
     BuyNowComponent,
-    PaymentsuccessComponent
+    PaymentsuccessComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
