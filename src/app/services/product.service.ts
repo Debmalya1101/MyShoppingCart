@@ -35,4 +35,8 @@ export class ProductService {
 
   }
 
+  getProductByPrice(start:number,end:number){
+    return this.http.get<Product[]>("http://localhost:8080/products/"+start+"/"+end);
+  }
+
 }

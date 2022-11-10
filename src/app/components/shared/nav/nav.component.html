@@ -10,9 +10,9 @@
       <div class="dropdown me-3 py-2 text-white text-decoration-none" style="float:right;">
         <span class="dropbtn"><i class='fas fa-user-circle'></i> {{user.userName}}</span>
         <div class="dropdown-content">
-          <a href="#"><i class='fas fa-user-alt'></i> Profile</a>
-          <a href="#"><i class='fas fa-shopping-cart'></i> My Orders</a>
-          <a href=""><i class="fa fa-question-circle"></i> Help</a>
+          <a [routerLink]="['/shop']"><i class='fas fa-user-alt'></i> Profile</a>
+          <a [routerLink]="['/shop']"><i class='fas fa-shopping-cart'></i> My Orders</a>
+          <a [routerLink]="['/shop']"><i class="fa fa-question-circle"></i> Help</a>
           <a class="text-dark text-decoration-none" [routerLink]="['/login']" (click)="loggedOutUser()"><i class="fa fa-sign-out"></i> Logout</a>
         </div>
       </div>

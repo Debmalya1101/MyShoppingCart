@@ -1,3 +1,6 @@
+import { ResetpricefiltermessengerService } from './../../../services/resetpricefiltermessenger.service';
+import { Filter } from './../../../models/filter';
+import { FiltermessengerService } from './../../../services/filtermessenger.service';
 import { User } from 'src/app/models/user';
 import { WishlistService } from './../../../services/wishlist.service';
 import { Product } from './../../../models/product';
@@ -15,9 +18,12 @@ export class ProductListComponent implements OnInit {
   productList:Product[]=[]
   wishlist:number[]=[]
   user!:User
+  filter!:Filter
 
   constructor(private productService:ProductService,
-              private wishlistService:WishlistService
+              private wishlistService:WishlistService,
+              private filtermsg:FiltermessengerService,
+              private resetpricefiltermsg:ResetpricefiltermessengerService
     ) { }
 
   ngOnInit(): void {
@@ -25,6 +31,8 @@ export class ProductListComponent implements OnInit {
     // console.log(this.productList.length)
     this.getProducts()
     this.loadWishlist()
+    this.handleFilterMsg()
+    this.resetFilterMsg()
   }
 
   getProducts(){
@@ -42,6 +50,21 @@ export class ProductListComponent implements OnInit {
       this.wishlistService.getWishlist(this.user).subscribe(data=>{
         data.forEach((w:any)=>this.wishlist.push(w.productId));
         //console.log(this.wishlist)
+      })
+    }
+
+    handleFilterMsg(){
+      this.filtermsg.getMsg().subscribe((data:any)=>{
+        this.filter=data;
+        this.productService.getProductByPrice(this.filter.start,this.filter.end).subscribe((data)=>{
+          this.productList=data;
+        })
+      })
+    }
+
+    resetFilterMsg(){
+      this.resetpricefiltermsg.getMsg().subscribe(()=>{
+        this.getProducts()
       })
     }
 

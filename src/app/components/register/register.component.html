@@ -1,12 +1,13 @@
-<div class="container-fluid ps-md-0">
-    <div class="row g-0">
-      <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
-      <div class="col-md-8 col-lg-6 bg-secondary bg-opacity-10">
-        <div class="login d-flex align-items-center py-5">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-9 col-lg-8 mx-auto">
-                <h3 class="login-heading mb-4">Create Account</h3>
+<div class="mine">
+  <div class="container-fluid ps-md-0">
+      <div class="row g-0 bord">
+        <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
+        <div class="col-md-8 col-lg-6 bg-light">
+          <div class="login d-flex align-items-center py-5">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-9 col-lg-8 mx-auto">
+                  <h3 class="login-heading mb-4">Create Account</h3>
   
                 <!-- Sign In Form -->
                 <form #registrationForm="ngForm" (ngSubmit)="registerUser()">
@@ -53,6 +54,7 @@
                     <button [disabled]="registrationForm.form.invalid" type="submit" class="btn btn-primary w-100">Register</button>
                 </form>
                 <small class="float-end">Existing User? <a class="text-decoration-none" [routerLink]="['/login']">Login Here</a></small>
+                </div>
               </div>
             </div>
           </div>
