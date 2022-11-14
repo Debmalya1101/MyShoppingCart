@@ -19,6 +19,7 @@ export class NavComponent implements OnInit {
 
   loggedOutUser(){
     localStorage.removeItem('user')
+    localStorage.removeItem('loggedIn')
     console.log('removed')
   }
 
