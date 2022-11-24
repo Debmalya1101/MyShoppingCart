@@ -1,4 +1,25 @@
 <div class="cart-item">
-    <span>{{cartItem.productName}}</span> x <span>{{cartItem.qty}}</span> : <strong>{{ cartItem.qty*cartItem.price | currency:'INR'}}</strong>
-    <button class="btn-xs float-sm-end bg-danger" (click)="deleteCart()"><strong>X</strong></button>
+    <p><span>{{cartItem.productName}}</span></p>
+    <div id="cart-row">
+        <div class="cart-row-line">
+            <!-- <button class="quantity">
+                <span class="material-symbols-outlined">
+                add
+                </span>
+            </button> -->
+            <span>x {{cartItem.qty}} : </span>
+            <!-- <button class="quantity">
+                <span class="material-symbols-outlined">
+                remove
+                </span>
+            </button> -->
+            <strong>{{ cartItem.qty*cartItem.price | currency:'INR'}}</strong>
+        </div>
+        <button class="btn-dlt cart-row-line" (click)="deleteCart()">
+            <span class="material-symbols-rounded">
+                cancel
+            </span>
+        </button>
+
+    </div>
 </div>

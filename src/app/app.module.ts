@@ -20,6 +20,8 @@ import { FormsModule } from '@angular/forms';
 import { BuyNowComponent } from './components/buy-now/buy-now.component';
 import { PaymentsuccessComponent } from './components/buy-now/paymentsuccess/paymentsuccess.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ProfileComponent } from './components/shared/nav/profile/profile.component';
+import { PaginationdemoComponent } from './components/paginationdemo/paginationdemo.component';
 
 
 @NgModule({
@@ -39,6 +41,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     PageNotFoundComponent,
     BuyNowComponent,
     PaymentsuccessComponent,
+    ProfileComponent,
+    PaginationdemoComponent,
   ],
   imports: [
     BrowserModule,

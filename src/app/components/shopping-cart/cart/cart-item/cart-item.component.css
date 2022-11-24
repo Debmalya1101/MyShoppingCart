@@ -1,0 +1,24 @@
+.btn-dlt{
+    border: none;
+    background-color: transparent;
+
+}
+.material-symbols-rounded{
+    color: red;
+    margin: 0;
+}
+
+#cart-row{
+    display: flex;
+    justify-content: space-between;
+}
+
+.cart-row-line{
+    display: flex;
+    align-items: center;
+}
+
+.quantity{
+    border: none;
+    background-color: transparent;
+}

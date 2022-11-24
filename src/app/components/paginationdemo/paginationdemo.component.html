@@ -1,0 +1,41 @@
+<div class="row">
+    <div class="col-md-4" *ngFor="let product of products">
+        <div class="card mb-4 shadow-sm pcard">
+            <img class="bd-placeholder-img card-img-top" height="300px" width="200px" [src]="product.imageUrl">
+            <div class="card-body">
+              <p class="card-text">
+                <strong>{{product.name}}</strong>
+              </p>
+              <p class="card-text">{{product.description}}</p>
+              <p class="card-text">
+                  <strong>{{ product.price | currency:'INR'}}</strong>
+              </p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-primary product-btn" >Add to Cart</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary product-btn">View Details</button>
+                </div>
+              </div>
+            </div>
+            </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12 d-flex justify-content-center">
+        <div class="form-inline float-left mr-1">
+            <select class="from-control" [value]="productsPerPage" (change)="changePageSize($event)">
+                <option value="3">3 per page</option>
+                <option value="6">6 per page</option>
+                <option value="9">9 per page</option>
+                <option value="12">12 per page</option>
+                <option value="15">15 per page</option>
+            </select>
+        </div>
+
+        <div class="btn-group float-right">
+            <button class="btn btn-outline-primary" *ngFor="let page of pageNumbers" (click)="changePage(page)" 
+            [class.active]="page==selectedPage">{{page}}</button>
+        </div>
+    </div>
+</div>

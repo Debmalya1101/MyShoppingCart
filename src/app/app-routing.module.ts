@@ -1,3 +1,5 @@
+import { PaginationdemoComponent } from './components/paginationdemo/paginationdemo.component';
+import { ProfileComponent } from './components/shared/nav/profile/profile.component';
 
 import { PaymentsuccessComponent } from './components/buy-now/paymentsuccess/paymentsuccess.component';
 import { BuyNowComponent } from './components/buy-now/buy-now.component';
@@ -15,6 +17,8 @@ const routes : Routes = [
     {path:'shop', component:ShoppingCartComponent},
     {path:'buy', component:BuyNowComponent},
     {path:'paysuccess', component:PaymentsuccessComponent},
+    {path:'profile', component:ProfileComponent},
+    {path:'pagination', component:PaginationdemoComponent},
     {path:'**', component:PageNotFoundComponent}
 ]
 
