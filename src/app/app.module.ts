@@ -22,6 +22,7 @@ import { PaymentsuccessComponent } from './components/buy-now/paymentsuccess/pay
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ProfileComponent } from './components/shared/nav/profile/profile.component';
 import { PaginationdemoComponent } from './components/paginationdemo/paginationdemo.component';
+import { OrdersComponent } from './components/shared/nav/orders/orders.component';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import { PaginationdemoComponent } from './components/paginationdemo/paginationd
     PaymentsuccessComponent,
     ProfileComponent,
     PaginationdemoComponent,
+    OrdersComponent,
   ],
   imports: [
     BrowserModule,

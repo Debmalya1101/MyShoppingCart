@@ -15,16 +15,29 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class ProductListComponent implements OnInit {
 
-  productList:Product[]=[]
-  wishlist:number[]=[]
-  user!:User
-  filter!:Filter
+  productList: Product[] = []
+  wishlist: number[] = []
+  user!: User
+  filter!: Filter
 
-  constructor(private productService:ProductService,
-              private wishlistService:WishlistService,
-              private filtermsg:FiltermessengerService,
-              private resetpricefiltermsg:ResetpricefiltermessengerService
-    ) { }
+  //added for pagination
+  products!: Product[]
+  productsPerPage: number = 3;
+  productListLength!: number;
+  public selectedPage = 1
+  //ends here
+
+  //for filter pagination
+  isfilter:boolean=false
+  filterProductsPerPage = 3;
+  filterProductListLength!: number;
+  public filterSelectedPage = 1
+
+  constructor(private productService: ProductService,
+    private wishlistService: WishlistService,
+    private filtermsg: FiltermessengerService,
+    private resetpricefiltermsg: ResetpricefiltermessengerService
+  ) { }
 
   ngOnInit(): void {
     // this.productList=this.productService.getProducts()
@@ -35,37 +48,116 @@ export class ProductListComponent implements OnInit {
     this.resetFilterMsg()
   }
 
-  getProducts(){
+  getProducts() {
 
-    this.productService.getProducts().subscribe((data)=>{
+    this.productService.getProducts().subscribe((data) => {
 
-        this.productList=data;
-        // console.log(this.productList);
+      this.selectedPage=1
 
-      });
-    }
+      this.productList = data;
+      // for normal pagination
+      this.productListLength = this.productList.length;
+      let pageIndex = (this.selectedPage - 1) * this.productsPerPage;
+      this.products = this.productList.slice(pageIndex, this.productsPerPage);
+      //for filter pagination
+      this.isfilter=false
 
-    loadWishlist(){
-      this.user=JSON.parse(localStorage.getItem('user')!)
-      this.wishlistService.getWishlist(this.user).subscribe(data=>{
-        data.forEach((w:any)=>this.wishlist.push(w.productId));
-        //console.log(this.wishlist)
+    });
+  }
+
+  //for normal pagination functions
+  changePageSize(event: Event) {
+    const newSize = (event.target as HTMLInputElement).value
+    this.productsPerPage = Number(newSize);
+    this.changePage(1)
+  }
+
+  get pageNumbers(): number[] {
+    // console.log(this.productListLength)
+    return Array(Math.ceil(this.productListLength / this.productsPerPage))
+      .fill(0).map((x, i) => i + 1);
+  }
+
+  changePage(page: any) {
+    this.selectedPage = page;
+    this.slicedProducts();
+  }
+
+  slicedProducts() {
+    let pageIndex = (this.selectedPage - 1) * this.productsPerPage;
+    let endIndex = (this.selectedPage - 1) * this.productsPerPage + this.productsPerPage;
+    this.products = [];
+    this.productService.getProducts().subscribe(data => {
+      this.productList = data;
+      this.products = this.productList.slice(pageIndex, endIndex);
+    })
+
+  }
+  //normal pagination functions list end here
+
+
+  //functions for filter pagination
+  filterChangePageSize(event: Event) {
+    const newSize = (event.target as HTMLInputElement).value
+    this.filterProductsPerPage = Number(newSize);
+    this.filterChangePage(1)
+  }
+
+  get filterPageNumbers(): number[] {
+    return Array(Math.ceil(this.filterProductListLength / this.filterProductsPerPage))
+      .fill(0).map((x, i) => i + 1);
+  }
+
+  filterChangePage(page: any) {
+    this.filterSelectedPage = page;
+    this.filterSlicedProducts();
+  }
+
+  filterSlicedProducts() {
+    let pageIndex = (this.filterSelectedPage - 1) * this.filterProductsPerPage;
+    let endIndex = (this.filterSelectedPage - 1) * this.filterProductsPerPage + this.filterProductsPerPage;
+    this.products = [];
+    this.productService.getProductByPrice(this.filter.start, this.filter.end).subscribe((data) => {
+      this.productList = data;
+      this.products = this.productList.slice(pageIndex, endIndex);
+    })
+  }
+  //ends
+
+
+  //wishlist function
+  loadWishlist() {
+    this.user = JSON.parse(localStorage.getItem('user')!)
+    this.wishlistService.getWishlist(this.user).subscribe(data => {
+      data.forEach((w: any) => this.wishlist.push(w.productId));
+      //console.log(this.wishlist)
+    })
+  }
+
+
+  //This methods are for filters
+  handleFilterMsg() {
+    this.filtermsg.getMsg().subscribe((data: any) => {
+      this.filter = data;
+      this.filterSelectedPage=1
+      this.productService.getProductByPrice(this.filter.start, this.filter.end).subscribe((data) => {
+        this.productList = data;
+        // for filter pagination
+        this.isfilter=true;
+        this.filterProductListLength = this.productList.length;
+        let pageIndex = (this.filterSelectedPage - 1) * this.filterProductsPerPage;
+        this.products = this.productList.slice(pageIndex, this.filterProductsPerPage);
+
+        this.loadWishlist();
       })
-    }
+    })
+  }
 
-    handleFilterMsg(){
-      this.filtermsg.getMsg().subscribe((data:any)=>{
-        this.filter=data;
-        this.productService.getProductByPrice(this.filter.start,this.filter.end).subscribe((data)=>{
-          this.productList=data;
-        })
-      })
-    }
-
-    resetFilterMsg(){
-      this.resetpricefiltermsg.getMsg().subscribe(()=>{
-        this.getProducts()
-      })
-    }
+  resetFilterMsg() {
+    this.resetpricefiltermsg.getMsg().subscribe(() => {
+      this.getProducts();
+      this.loadWishlist();
+    })
+  }
 
 }

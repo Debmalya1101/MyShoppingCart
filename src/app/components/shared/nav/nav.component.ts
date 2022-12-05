@@ -14,13 +14,13 @@ export class NavComponent implements OnInit {
 
   ngOnInit(): void {
     this.user=JSON.parse(localStorage.getItem('user')!)
-    console.log(this.user.userName)
+    // console.log(this.user.userName)
   }
 
   loggedOutUser(){
     localStorage.removeItem('user')
     localStorage.removeItem('loggedIn')
-    console.log('removed')
+    // console.log('removed')
   }
 
 }

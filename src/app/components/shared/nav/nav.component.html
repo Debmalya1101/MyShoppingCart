@@ -2,17 +2,17 @@
     <app-header></app-header>
 
     <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto navfont">
-      <a class="me-3 py-2 text-white text-decoration-none" [routerLink]="['/shop']">Features</a>
+      <!-- <a class="me-3 py-2 text-white text-decoration-none" [routerLink]="['/shop']">Features</a>
       <a class="me-3 py-2 text-white text-decoration-none" [routerLink]="['/shop']">Enterprise</a>
       <a class="me-3 py-2 text-white text-decoration-none" [routerLink]="['/shop']">Support</a>
-      <a class="me-3 py-2 text-white text-decoration-none" [routerLink]="['/shop']">Pricing</a>
+      <a class="me-3 py-2 text-white text-decoration-none" [routerLink]="['/shop']">Pricing</a> -->
       <!-- <a class="me-3 py-2 text-white text-decoration-none"><i class="fa fa-user-circle" aria-hidden="true">{{user.userName}}</i></a> -->
       <div class="dropdown me-3 py-2 text-white text-decoration-none" style="float:right;">
         <span class="dropbtn"><i class='fas fa-user-circle'></i> {{user.userName}}</span>
         <div class="dropdown-content">
           <a [routerLink]="['/profile']"><i class='fas fa-user-alt'></i> Profile</a>
-          <a [routerLink]="['/shop']"><i class='fas fa-shopping-cart'></i> My Orders</a>
-          <a [routerLink]="['/shop']"><i class="fa fa-question-circle"></i> Help</a>
+          <a [routerLink]="['/myorders']"><i class='fas fa-shopping-cart'></i> My Orders</a>
+          <!-- <a [routerLink]="['/shop']"><i class="fa fa-question-circle"></i> Help</a> -->
           <a class="text-dark text-decoration-none" [routerLink]="['/login']" (click)="loggedOutUser()"><i class="fa fa-sign-out"></i> Logout</a>
         </div>
       </div>

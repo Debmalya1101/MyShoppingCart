@@ -32,7 +32,6 @@ export class ProductItemComponent implements OnInit {
 
   handleAddtocart(){
     //console.log(this.productItem);
-    console.log(JSON.parse(localStorage.getItem('user')!))
     this.u=JSON.parse(localStorage.getItem('user')!)
     this.cartService.addProductToCart(this.productItem, this.u).subscribe(data=>{
       this.msg.sendMsg(this.productItem);

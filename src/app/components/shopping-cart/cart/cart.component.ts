@@ -58,7 +58,7 @@ export class CartComponent implements OnInit {
     this.user=JSON.parse(localStorage.getItem('user')!)
     this.wishlistService.getWishlist(this.user).subscribe(data=>{
       this.wishlist=data;
-      console.log(this.wishlist);
+      // console.log(this.wishlist);
     })
   }
 

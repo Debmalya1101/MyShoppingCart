@@ -49,8 +49,7 @@ export class PaginationdemoComponent implements OnInit {
     this.productService.getProducts().subscribe(data => {
       this.productList = data;
       this.products = this.productList.slice(pageIndex, endIndex);
-    })
-    
+    }) 
   }
 
 }

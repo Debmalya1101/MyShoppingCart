@@ -1,3 +1,4 @@
+import { OrderHistoryService } from './../../services/order-history.service';
 import { Component, OnInit } from '@angular/core';
 import { CartItem } from 'src/app/models/cart-item';
 import { User } from 'src/app/models/user';
@@ -15,7 +16,7 @@ export class BuyNowComponent implements OnInit {
   cartTotal=0
   user!:User
 
-  constructor(private cartService:CartService) { }
+  constructor(private cartService:CartService, private orderSevice:OrderHistoryService) { }
 
   ngOnInit(): void {
     this.user=JSON.parse(localStorage.getItem('user')!)
@@ -30,6 +31,16 @@ export class BuyNowComponent implements OnInit {
       this.cartItems.forEach(c=>{
         this.cartTotal+= c.price*c.qty;
       })
+    })
+  }
+
+  updateOrderHistory(){
+    console.log(this.cartItems)
+    this.orderSevice.addToOrderHistory(this.cartItems,this.user).subscribe(data=>{
+      // console.log(data)
+    })
+    this.cartService.removeAllProductFromCart(this.user).subscribe(data=>{
+      // console.log("remove from cart")
     })
   }
 

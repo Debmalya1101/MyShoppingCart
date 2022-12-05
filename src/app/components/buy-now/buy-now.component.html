@@ -59,7 +59,7 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-6">
-                                                    <button [disabled]="loginForm.form.invalid" class="btn btn-info paybutton" [routerLink]="['/paysuccess']">MAKE A PAYMENT</button>
+                                                    <button [disabled]="loginForm.form.invalid" class="btn btn-info paybutton" (click)="updateOrderHistory()" [routerLink]="['/paysuccess']">MAKE A PAYMENT</button>
                                                 </div>
                                             </div>
                                         </div>

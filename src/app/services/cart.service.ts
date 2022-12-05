@@ -32,4 +32,8 @@ export class CartService {
   removeProductFromCart(cart:CartItem,user:User):Observable<Object>{
     return this.http.delete<Object>("http://localhost:8080/cart/"+cart.productId+"/"+user.id);
   }
+
+  removeAllProductFromCart(user:User):Observable<Object>{
+    return this.http.delete<Object>("http://localhost:8080/cartall/"+user.id);
+  }
 }

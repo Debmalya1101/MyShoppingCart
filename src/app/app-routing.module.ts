@@ -1,3 +1,4 @@
+import { OrdersComponent } from './components/shared/nav/orders/orders.component';
 import { PaginationdemoComponent } from './components/paginationdemo/paginationdemo.component';
 import { ProfileComponent } from './components/shared/nav/profile/profile.component';
 
@@ -19,6 +20,7 @@ const routes : Routes = [
     {path:'paysuccess', component:PaymentsuccessComponent},
     {path:'profile', component:ProfileComponent},
     {path:'pagination', component:PaginationdemoComponent},
+    {path:'myorders', component:OrdersComponent},
     {path:'**', component:PageNotFoundComponent}
 ]
 
