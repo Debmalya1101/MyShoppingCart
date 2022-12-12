@@ -10,10 +10,13 @@ import { Observable } from 'rxjs';
 })
 export class OrderHistoryService {
 
+  order=new Orders()
+
   constructor(private http:HttpClient) { }
 
   addToOrderHistory(cart:CartItem[], user:User):Observable<Object>{
-    return this.http.post<Object>("http://localhost:8080/myorders/"+user.id, cart);
+    console.log(this.order)
+    return this.http.post<Object>("http://localhost:8080/myorders/"+user.id, this.order);
   }
 
   getOrderHistory(user:User):Observable<Orders[]>{

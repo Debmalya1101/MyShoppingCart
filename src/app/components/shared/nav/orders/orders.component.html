@@ -21,7 +21,7 @@
     </tbody>
   </table> -->
 
-  <table class="table-bordered">
+  <!-- <table class="table-bordered">
     <thead class="table-secondary">
       <tr>
         <th>OrderId</th>
@@ -38,6 +38,31 @@
         <td>{{order.total}}</td>
       </tr>
     </tbody>
-  </table>
+  </table> -->
+
+
+  <div class="card shadow p-3 mb-4 bg-white rounded" *ngFor="let order of orders">
+    <div class="card-title shadow-sm rounded">
+      <strong>OrderID : #00{{order.orderId}}</strong>
+    </div>
+    <div class="row">
+      <div class="col-md-5">
+        <strong class="text-secondary">Order By : </strong>{{order.name}}<br>
+        <strong class="text-secondary">Contact No : </strong>{{order.phoneNo}} <br>
+        <strong class="text-secondary">Delivery Address : </strong>{{order.address}} <br>
+        <strong class="text-secondary">Ordered At : </strong>{{order.orderDate}}
+      </div>
+      <div class="col-md-4">
+        <strong class="text-secondary"> Products : </strong><br>
+        <!-- {{order.products}} --> <p [innerText]="order.products"></p>
+      </div>
+
+      <div class="col-md-3">
+        <div class="float-end">
+          <strong class="text-secondary">Total Price : </strong>{{order.total}}
+        </div>
+      </div>
+    </div>
+  </div>
 
 </div>

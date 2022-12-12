@@ -72,3 +72,14 @@ main {
       border-bottom: 0;
     }
   } */
+
+.card{
+    border-radius: 0%;
+}
+
+.card-title{
+  background-color: rgb(246, 246, 246);
+  width: 10%;
+  border-radius:1em;
+  text-align: center;
+}

@@ -16,13 +16,16 @@ import { ProductItemComponent } from './components/shopping-cart/product-list/pr
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { PageNotFoundComponent } from './components/shared/page-not-found/page-not-found.component';
-import { FormsModule } from '@angular/forms';
 import { BuyNowComponent } from './components/buy-now/buy-now.component';
 import { PaymentsuccessComponent } from './components/buy-now/paymentsuccess/paymentsuccess.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ProfileComponent } from './components/shared/nav/profile/profile.component';
 import { PaginationdemoComponent } from './components/paginationdemo/paginationdemo.component';
 import { OrdersComponent } from './components/shared/nav/orders/orders.component';
+import { OrderDetailsComponent } from './components/order-details/order-details.component';
+import {MatInputModule} from '@angular/material/input';
+import {FormsModule,ReactiveFormsModule} from '@angular/forms';
+import { PaymentpageComponent } from './components/order-details/paymentpage/paymentpage.component';
 
 
 @NgModule({
@@ -45,13 +48,17 @@ import { OrdersComponent } from './components/shared/nav/orders/orders.component
     ProfileComponent,
     PaginationdemoComponent,
     OrdersComponent,
+    OrderDetailsComponent,
+    PaymentpageComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    MatInputModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

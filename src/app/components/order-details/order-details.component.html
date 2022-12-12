@@ -1,0 +1,81 @@
+<!-- <form [formGroup]="orderDetailsForm">
+    Name : <input type="text" formControlName="name"><br><br>
+    Contact No : <input type="text" name="" id="" formControlName="phoneno"><br><br>
+    Address : <textarea name="" id="" cols="30" rows="5" formControlName="address"></textarea><br><br>
+    <button class="btn btn-primary" [disabled]="orderDetailsForm.invalid">Submit</button>
+</form> -->
+<div class="testbox">
+  <form [formGroup]="orderDetailsForm">
+    <div class="banner">
+      <h1>Personal Information</h1>
+    </div>
+    
+    <br>
+    <div class="name-item">
+      <div class="item">
+        <p>First Name</p>
+        <input type="text" name="name" placeholder="First" formControlName="fname" />
+        <p *ngIf="fname?.invalid && (fname?.dirty || fname?.touched)">
+          <small *ngIf="fname?.errors?.['required']"  class="text-danger">
+            First Name is required.
+          </small>
+          <small *ngIf="fname?.errors?.['minlength']"  class="text-danger">
+            First Name must be at least 4 characters long.
+          </small>
+        </p>
+      </div>
+      <div class="item">
+        <p>Last Name</p>
+        <input type="text" name="name" placeholder="Last" formControlName="lname" />
+        <p *ngIf="lname?.invalid && (lname?.dirty || lname?.touched)">
+          <small *ngIf="lname?.errors?.['required']"  class="text-danger">
+            Last Name is required.
+          </small>
+          <small *ngIf="lname?.errors?.['minlength']"  class="text-danger">
+            Last Name must be at least 4 characters long.
+          </small>
+        </p>
+      </div>
+    </div>
+
+    <div class="contact-item">
+      <div class="item">
+        <p>Email</p>
+        <input type="text" name="name" formControlName="email" />
+        <p *ngIf="email?.invalid && (email?.dirty || email?.touched)">
+          <small *ngIf="email?.errors?.['required']"  class="text-danger">
+            Email Name is required.
+          </small>
+          <small *ngIf="email?.errors?.['pattern']"  class="text-danger">
+            Not a valid email.
+          </small>
+        </p>
+      </div>
+      <div class="item">
+        <p>Phone</p>
+        <input type="text" name="name" formControlName="phoneno" />
+        <p *ngIf="phoneno?.invalid && (phoneno?.dirty || phoneno?.touched)">
+          <small *ngIf="phoneno?.errors?.['required']"  class="text-danger">
+            Phone No is required.
+          </small>
+          <small *ngIf="phoneno?.errors?.['pattern']"  class="text-danger">
+            Not a valid Phone No.
+          </small>
+        </p>
+      </div>
+    </div>
+    <div class="item">
+      <p>Delivery Address</p>
+      <textarea rows="3" formControlName="address"></textarea>
+      <p *ngIf="address?.invalid && (address?.dirty || address?.touched)">
+        <small *ngIf="address?.errors?.['required']"  class="text-danger">
+          Address is required.
+        </small>
+      </p>
+    </div>
+    <div class="btn-block">
+      <button class="btn btn-primary" type="submit" [disabled]="orderDetailsForm.invalid" (click)="afterContinue()"
+        [routerLink]="['/buy']">Continue</button>
+    </div>
+  </form>
+</div>

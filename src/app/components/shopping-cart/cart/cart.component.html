@@ -1,6 +1,6 @@
 <div class="card filters">
     <div class="card-header">
-        <strong>My Cart</strong>
+        <strong><i class="fa fa-shopping-cart"></i> My Cart</strong>
     </div>
 <div *ngIf="cartItems.length === 0" class="mty">Cart is Emplty!</div>
 <div *ngIf="cartItems.length > 0" class="cnt">
@@ -17,14 +17,14 @@
 </ul>
 
 <div class="card-footer text-center bg-dark text-white" *ngIf="cartItems.length > 0">
-    <a class="text-decoration-none text-warning" [routerLink]="['/buy']"><strong>Buy Now</strong></a>
+    <a class="text-decoration-none text-warning" [routerLink]="['/orderDetails']"><strong>Buy Now</strong></a>
 </div>
 </div>
 
 <br>
 <div class="card filters">
     <div class="card-header">
-        <strong>My WishList</strong>
+        <strong><i class="fa fa-heart" style="color:black"></i> My WishList</strong>
     </div>
     <div *ngIf="wishlist.length === 0" class="wmty">Wishlist is Emplty!</div>
     <div *ngIf="wishlist.length > 0" class="wnt">

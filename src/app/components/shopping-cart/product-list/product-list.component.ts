@@ -91,6 +91,7 @@ export class ProductListComponent implements OnInit {
       this.productList = data;
       this.products = this.productList.slice(pageIndex, endIndex);
     })
+    this.loadWishlist();
 
   }
   //normal pagination functions list end here

@@ -22,7 +22,7 @@ export class OrdersComponent implements OnInit {
 
   loadOrderHistory(){
     this.orderService.getOrderHistory(this.user).subscribe(data=>{
-      this.orders=data;
+      this.orders=data.reverse();
     })
   }
 
