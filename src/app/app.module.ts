@@ -26,6 +26,7 @@ import { OrderDetailsComponent } from './components/order-details/order-details.
 import {MatInputModule} from '@angular/material/input';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { PaymentpageComponent } from './components/order-details/paymentpage/paymentpage.component';
+import { ProductDetailsComponent } from './components/shopping-cart/product-details/product-details.component';
 
 
 @NgModule({
@@ -50,6 +51,7 @@ import { PaymentpageComponent } from './components/order-details/paymentpage/pay
     OrdersComponent,
     OrderDetailsComponent,
     PaymentpageComponent,
+    ProductDetailsComponent,
   ],
   imports: [
     BrowserModule,

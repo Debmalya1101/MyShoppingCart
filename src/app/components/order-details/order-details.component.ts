@@ -49,6 +49,7 @@ export class OrderDetailsComponent implements OnInit {
     this.orderService.order.name = this.orderDetailsForm.get('fname')?.value +" "+ this.orderDetailsForm.get('lname')?.value;
     this.orderService.order.phoneNo= this.orderDetailsForm.get('phoneno')?.value;
     this.orderService.order.address=this.orderDetailsForm.get('address')?.value;
+    this.orderService.order.email=this.orderDetailsForm.get('email')?.value;
     console.log("Okay")
   }
 

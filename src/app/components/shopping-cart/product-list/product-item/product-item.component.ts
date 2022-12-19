@@ -1,3 +1,4 @@
+import { ProductDetailsMessangerService } from './../../../../services/product-details-messanger.service';
 import { User } from './../../../../models/user';
 import { RegistrationService } from 'src/app/services/registration.service';
 import { WishlistService } from './../../../../services/wishlist.service';
@@ -24,7 +25,8 @@ export class ProductItemComponent implements OnInit {
   constructor(private msg:MessengerService,
               private cartService:CartService,
               private wishlistService:WishlistService,
-              private regservice:RegistrationService
+              private regservice:RegistrationService,
+              private detailsService:ProductDetailsMessangerService
     ) { }
 
   ngOnInit(): void {
@@ -52,6 +54,12 @@ export class ProductItemComponent implements OnInit {
       this.addedToWishlist=false
       this.msg.sendMsg(this.productItem);
     })
+  }
+
+  handleViewDetails(){
+    console.log('sent')
+    sessionStorage.setItem('product',JSON.stringify(this.productItem))
+    this.detailsService.sendMsg(this.productItem);
   }
 
 }

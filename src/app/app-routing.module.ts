@@ -1,3 +1,4 @@
+import { ProductDetailsComponent } from './components/shopping-cart/product-details/product-details.component';
 import { OrderDetailsComponent } from './components/order-details/order-details.component';
 import { OrdersComponent } from './components/shared/nav/orders/orders.component';
 import { PaginationdemoComponent } from './components/paginationdemo/paginationdemo.component';
@@ -21,9 +22,9 @@ const routes : Routes = [
     {path:'buy', component:PaymentpageComponent},
     {path:'paysuccess', component:PaymentsuccessComponent},
     {path:'profile', component:ProfileComponent},
-    {path:'pagination', component:PaginationdemoComponent},
     {path:'myorders', component:OrdersComponent},
     {path:'orderDetails', component:OrderDetailsComponent},
+    {path:'productDetails', component:ProductDetailsComponent},
     {path:'**', component:PageNotFoundComponent}
 ]
 

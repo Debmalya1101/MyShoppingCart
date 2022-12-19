@@ -44,7 +44,7 @@
         <input type="text" name="name" formControlName="email" />
         <p *ngIf="email?.invalid && (email?.dirty || email?.touched)">
           <small *ngIf="email?.errors?.['required']"  class="text-danger">
-            Email Name is required.
+            Email is required.
           </small>
           <small *ngIf="email?.errors?.['pattern']"  class="text-danger">
             Not a valid email.

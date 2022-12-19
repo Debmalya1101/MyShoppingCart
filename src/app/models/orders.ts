@@ -6,6 +6,7 @@ export class Orders {
     total!: number;
     name!:String;
     phoneNo!:number;
+    email!:String;
     address!:string;
 
     constructor() {

@@ -104,6 +104,12 @@ button {
     cursor: pointer;
 }
 
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched{
+    border-left: 2px solid red;
+    border-color: #dc3545;
+    box-shadow: 0 0 2px 0 #dc3545;
+}
 /* button:hover {
     background: rgb(110, 110, 255);
 } */

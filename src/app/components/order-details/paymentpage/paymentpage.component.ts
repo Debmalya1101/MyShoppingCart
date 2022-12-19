@@ -31,7 +31,7 @@ export class PaymentpageComponent implements OnInit {
 
       this.orderSevice.order.products="";
       this.cartItems.forEach(c=>{
-        this.orderSevice.order.products+=(c.productName+" x "+c.qty+"\r")
+        this.orderSevice.order.products+=(c.productName+"  x  "+c.qty+"\r")
         this.cartTotal+= c.price*c.qty;
       })
       this.orderSevice.order.total=this.cartTotal;
