@@ -1,6 +1,7 @@
 import { User } from './../../../models/user';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-nav',
@@ -11,7 +12,7 @@ export class NavComponent implements OnInit {
 
   user!:User
 
-  constructor(private router:Router) { }
+  constructor(private router:Router, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.user=JSON.parse(localStorage.getItem('user')!)
@@ -22,6 +23,11 @@ export class NavComponent implements OnInit {
     // this.router.navigate(['/login'], { replaceUrl: true });
     localStorage.removeItem('user')
     localStorage.removeItem('loggedIn')
+    this.toastr.success('You have successfully Logged out', 'Success!',{
+      timeOut:2000,
+      closeButton: true,
+      progressBar: true,
+    });
     // console.log('removed')
   }
 

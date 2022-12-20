@@ -28,6 +28,11 @@ import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { PaymentpageComponent } from './components/order-details/paymentpage/paymentpage.component';
 import { ProductDetailsComponent } from './components/shopping-cart/product-details/product-details.component';
 
+import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { ToastrModule } from 'ngx-toastr';
+
 
 @NgModule({
   declarations: [
@@ -60,7 +65,10 @@ import { ProductDetailsComponent } from './components/shopping-cart/product-deta
     FormsModule,
     NgxPaginationModule,
     MatInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CommonModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

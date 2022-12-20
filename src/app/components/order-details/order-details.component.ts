@@ -1,6 +1,7 @@
 import { OrderHistoryService } from './../../services/order-history.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormControl, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-order-details',
@@ -19,7 +20,7 @@ export class OrderDetailsComponent implements OnInit {
     address:new FormControl('',[Validators.required])
   })
 
-  constructor(private orderService:OrderHistoryService) { }
+  constructor(private orderService:OrderHistoryService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
   }
@@ -50,7 +51,11 @@ export class OrderDetailsComponent implements OnInit {
     this.orderService.order.phoneNo= this.orderDetailsForm.get('phoneno')?.value;
     this.orderService.order.address=this.orderDetailsForm.get('address')?.value;
     this.orderService.order.email=this.orderDetailsForm.get('email')?.value;
-    console.log("Okay")
+    this.toastr.warning('Do not refresh the page', 'WARNING!',{
+      timeOut:2000,
+      closeButton: true,
+      progressBar: true,
+    });
   }
 
 }

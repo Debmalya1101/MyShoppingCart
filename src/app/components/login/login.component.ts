@@ -3,6 +3,7 @@ import { RegistrationService } from './../../services/registration.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
   user = new User();
   msg='';
 
-  constructor(private service : RegistrationService, private router:Router) { }
+  constructor(private service : RegistrationService, private router:Router, private toastr: ToastrService) { }
 
   ngOnInit(): void {
   }
@@ -22,7 +23,11 @@ export class LoginComponent implements OnInit {
   loginUser(){
     this.service.loginUserFromRemote(this.user).subscribe(
       data=>{
-        console.log("response received");
+        this.toastr.success('Login Successful', 'Success!',{
+          timeOut:5000,
+          closeButton: true,
+          progressBar: true,
+        });
         this.msg=''
         this.router.navigate(['/shop']);
         this.service.loggedInUser=data;
@@ -30,7 +35,12 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('loggedIn','true')
       },
       error=>{
-        console.log("exception occured");
+        // console.log("exception occured");
+        this.toastr.error('Bad Credentials', 'ERROR!',{
+          timeOut:5000,
+          closeButton: true,
+          progressBar: true,
+        });
         this.msg='Bad Credentials! Please enter correct EmailId & Password';
       }
     )

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-paymentsuccess',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PaymentsuccessComponent implements OnInit {
 
-  constructor() { }
+  constructor(private toastr: ToastrService) { }
 
   ngOnInit(): void {
+  }
+
+  afterClick(){
+    this.toastr.info('Go to Order History to track orders','Order Placed!',{
+      timeOut:3000,
+      closeButton: true,
+      progressBar: true,
+    })
   }
 
 }

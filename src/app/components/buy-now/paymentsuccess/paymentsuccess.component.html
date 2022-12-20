@@ -6,7 +6,7 @@
       <h1>Success</h1> 
       <p>We received your purchase request</p><br/>
       <div class="content">
-        <a [routerLink]="['/shop']">Go to Home</a>
+        <a (click)="afterClick()" [routerLink]="['/shop']">Go to Home</a>
      </div>
     </div>
   </body>
