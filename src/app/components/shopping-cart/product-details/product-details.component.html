@@ -10,7 +10,7 @@
                 </div>
                 <div class="col-lg-7 col-md-7 col-sm-6">
                     <h4 class="box-title mt-5"><strong>Product description</strong></h4>
-                    <p>Lorem Ipsum available,but the majority have suffered alteration in some form,by injected humour,or randomised words which don't look even slightly believable.but the majority have suffered alteration in some form,by injected humour</p>
+                    <p>{{product.details}}</p>
                     <h2 class="mt-5">
                         {{ product.price | currency:'INR'}}<small class="text-success">(5%off)</small>
                     </h2>
@@ -20,9 +20,9 @@
                     <!-- <button class="btn btn-primary btn-rounded">Buy Now</button> -->
                     <h3 class="box-title mt-5">Key Highlights</h3>
                     <ul class="list-unstyled">
-                        <li><i class="fa fa-check text-success"></i>Sturdy structure</li>
-                        <li><i class="fa fa-check text-success"></i>Designed to foster easy portability</li>
-                        <li><i class="fa fa-check text-success"></i>Perfect furniture to flaunt your wonderful collectibles</li>
+                        <li><i class="fa fa-check text-success"></i> Long-lasting battery</li>
+                        <li><i class="fa fa-check text-success"></i> Warp-speed processing</li>
+                        <li><i class="fa fa-check text-success"></i> Crystal-clear display</li>
                     </ul>
                 </div>
                 <div class="col-lg-12 col-md-12 col-sm-12">
@@ -32,63 +32,35 @@
                             <tbody>
                                 <tr>
                                     <td width="390">Brand</td>
-                                    <td>Stellar</td>
+                                    <td>Samsung</td>
                                 </tr>
                                 <tr>
-                                    <td>Delivery Condition</td>
-                                    <td>Knock Down</td>
+                                    <td>OS</td>
+                                    <td>{{product.os}}</td>
                                 </tr>
                                 <tr>
-                                    <td>Seat Lock Included</td>
-                                    <td>Yes</td>
+                                    <td>Processor</td>
+                                    <td>{{product.processor}}</td>
                                 </tr>
                                 <tr>
-                                    <td>Type</td>
-                                    <td>Office Chair</td>
+                                    <td>RAM | ROM</td>
+                                    <td>{{product.ram_rom}}</td>
                                 </tr>
                                 <tr>
-                                    <td>Style</td>
-                                    <td>Contemporary&amp;Modern</td>
+                                    <td>Rear Camera</td>
+                                    <td>{{product.rear_camera}}</td>
                                 </tr>
                                 <tr>
-                                    <td>Wheels Included</td>
-                                    <td>Yes</td>
+                                    <td>Front Camera</td>
+                                    <td>{{product.front_camera}}</td>
                                 </tr>
                                 <tr>
-                                    <td>Upholstery Included</td>
-                                    <td>Yes</td>
+                                    <td>Display</td>
+                                    <td>{{product.display}}</td>
                                 </tr>
                                 <tr>
-                                    <td>Upholstery Type</td>
-                                    <td>Cushion</td>
-                                </tr>
-                                <tr>
-                                    <td>Head Support</td>
-                                    <td>No</td>
-                                </tr>
-                                <tr>
-                                    <td>Suitable For</td>
-                                    <td>Study&amp;Home Office</td>
-                                </tr>
-                                <tr>
-                                    <td>Adjustable Height</td>
-                                    <td>Yes</td>
-                                </tr>
-                                <tr>
-                                    <td>Model Number</td>
-                                    <td>F01020701-00HT744A06</td>
-                                </tr>
-                                <tr>
-                                    <td>Armrest Included</td>
-                                    <td>Yes</td>
-                                </tr>
-                                <tr>
-                                    <td>Care Instructions</td>
-                                    <td>Handle With Care,Keep In Dry Place,Do Not Apply Any Chemical For Cleaning.</td>
-                                </tr>
-                                <tr>
-                                    <td>Finish Type</td>
-                                    <td>Matte</td>
+                                    <td>Battery</td>
+                                    <td>{{product.battery}}</td>
                                 </tr>
                             </tbody>
                         </table>
