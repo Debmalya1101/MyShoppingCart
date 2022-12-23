@@ -7,7 +7,7 @@
 <div class="testbox">
   <form [formGroup]="orderDetailsForm">
     <div class="banner">
-      <h1>Personal Information</h1>
+      <h1>Contact Information</h1>
     </div>
     
     <br>
@@ -74,8 +74,7 @@
       </p>
     </div>
     <div class="btn-block">
-      <button class="btn btn-primary" type="submit" [disabled]="orderDetailsForm.invalid" (click)="afterContinue()"
-        [routerLink]="['/buy']">Continue</button>
+      <button class="btn btn-primary" type="submit" [disabled]="orderDetailsForm.invalid" (click)="afterContinue()">Continue</button>
     </div>
   </form>
 </div>

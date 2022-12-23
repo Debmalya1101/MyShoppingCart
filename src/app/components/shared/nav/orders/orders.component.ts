@@ -13,6 +13,8 @@ export class OrdersComponent implements OnInit {
   orders!:Orders[]
   user!:User
 
+  p: number = 1;
+
   constructor(private orderService:OrderHistoryService) { }
 
   ngOnInit(): void {

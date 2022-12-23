@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
     this.service.loginUserFromRemote(this.user).subscribe(
       data=>{
         this.toastr.success('Login Successful', 'Success!',{
-          timeOut:5000,
+          timeOut:2500,
           closeButton: true,
           progressBar: true,
         });
@@ -36,12 +36,12 @@ export class LoginComponent implements OnInit {
       },
       error=>{
         // console.log("exception occured");
-        this.toastr.error('Bad Credentials', 'ERROR!',{
+        this.toastr.error('Invalid Credentials', 'ERROR!',{
           timeOut:5000,
           closeButton: true,
           progressBar: true,
         });
-        this.msg='Bad Credentials! Please enter correct EmailId & Password';
+        this.msg='Invalid Credentials! Please enter correct EmailId & Password';
       }
     )
   }

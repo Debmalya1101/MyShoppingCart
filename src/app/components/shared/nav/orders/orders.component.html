@@ -41,7 +41,7 @@
   </table> -->
 
 
-  <div class="card shadow p-3 mb-4 bg-white rounded" *ngFor="let order of orders">
+  <div class="card shadow p-3 mb-4 bg-white rounded" *ngFor="let order of orders| paginate: { itemsPerPage: 8, currentPage: p }">
     <div class="card-title shadow-sm rounded">
       <strong>OrderID : #00{{order.orderId}}</strong>
     </div>
@@ -51,7 +51,7 @@
         <strong class="text-secondary">Contact No : </strong>{{order.phoneNo}} <br>
         <strong class="text-secondary">Email : </strong>{{order.email}} <br>
         <strong class="text-secondary">Delivery Address : </strong>{{order.address}} <br>
-        <strong class="text-secondary">Ordered At : </strong>{{order.orderDate}}
+        <strong class="text-secondary">Ordered On : </strong>{{order.orderDate}}
       </div>
       <div class="col-md-4">
         <strong class="text-secondary"> Products : </strong><br>
@@ -65,5 +65,10 @@
       </div>
     </div>
   </div>
+
+  <pagination-controls (pageChange)="p = $event" align="center" style="font-size: large;color: rgb(60, 60, 60);"></pagination-controls>
+  <br>
+
+  <app-footer></app-footer>
 
 </div>

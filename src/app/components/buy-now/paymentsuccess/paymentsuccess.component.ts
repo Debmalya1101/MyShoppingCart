@@ -14,7 +14,7 @@ export class PaymentsuccessComponent implements OnInit {
   }
 
   afterClick(){
-    this.toastr.info('Go to Order History to track orders','Order Placed!',{
+    this.toastr.info('Go to My Orders to track orders','Order Placed!',{
       timeOut:3000,
       closeButton: true,
       progressBar: true,

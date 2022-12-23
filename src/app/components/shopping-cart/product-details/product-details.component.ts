@@ -1,6 +1,9 @@
+import { User } from './../../../models/user';
 import { Product } from './../../../models/product';
 import { ProductDetailsMessangerService } from './../../../services/product-details-messanger.service';
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-product-details',
@@ -10,19 +13,24 @@ import { Component, OnInit } from '@angular/core';
 export class ProductDetailsComponent implements OnInit {
 
   product!:Product
+  user!:User
 
-  constructor(private detailsService:ProductDetailsMessangerService) { }
+  constructor(private toastr: ToastrService, private cartService:CartService) { }
 
   ngOnInit(): void {
-    this.handleSubscription()
     this.product=JSON.parse(sessionStorage.getItem('product')!)
   }
 
-  handleSubscription(){
-    this.detailsService.getMsg().subscribe(data=>{
-      this.product=data
-      console.log(data);
+  handleAddToCart(){
+    this.user=JSON.parse(localStorage.getItem('user')!)
+    this.cartService.addProductToCart(this.product,this.user).subscribe();
+    this.toastr.success('Item has been added to the Cart','',{
+      timeOut:2500,
+      closeButton: true,
+      progressBar: true,
     })
   }
+
+  
 
 }

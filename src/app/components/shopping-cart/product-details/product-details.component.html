@@ -14,7 +14,7 @@
                     <h2 class="mt-5">
                         {{ product.price | currency:'INR'}}<small class="text-success">(5%off)</small>
                     </h2>
-                    <button class="btn btn-primary btn-rounded mr-1" data-toggle="tooltip" title="" data-original-title="Add to cart">
+                    <button class="btn btn-primary btn-rounded mr-1" data-toggle="tooltip" title="" data-original-title="Add to cart" (click)="handleAddToCart()">
                         <i class="fa fa-shopping-cart"></i> Add to Cart
                     </button>
                     <!-- <button class="btn btn-primary btn-rounded">Buy Now</button> -->
