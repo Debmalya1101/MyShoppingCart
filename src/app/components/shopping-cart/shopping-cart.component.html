@@ -1,43 +1,43 @@
-<app-nav *ngIf="isloggedIn=='true'"></app-nav>
+<app-nav *ngIf="isloggedIn == 'true'"></app-nav>
 <!-- <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="isloggedIn=='true'">
     <strong>Success!</strong>You have successfully logged in.
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div> -->
-<div class="container" *ngIf="isloggedIn=='true'">
-<div class="row">
+<div class="container" *ngIf="isloggedIn == 'true'">
+  <div class="row">
     <div class="col">
-        <app-filters></app-filters>
+      <app-filters></app-filters>
     </div>
 
     <div class="col-md-8">
-        <app-product-list></app-product-list>
+      <app-product-list></app-product-list>
     </div>
 
     <div class="col-md">
-        <app-cart></app-cart>
+      <app-cart></app-cart>
     </div>
-</div>
+  </div>
 
-<div class="row">
+  <div class="row">
     <div class="col">
       <app-footer></app-footer>
     </div>
   </div>
 </div>
 
-<div class="row" *ngIf="isloggedIn!='true'">
-    <div class="col-md-4 offset-md-4">
-        <div class="card">
-            <div class="card-header">
-                <h3><strong>404 - Page Not Found</strong></h3>
-            </div>
+<div class="row" *ngIf="isloggedIn != 'true'">
+  <div class="col-md-4 offset-md-4">
+    <div class="card">
+      <div class="card-header">
+        <h3><strong>404 - Page Not Found</strong></h3>
+      </div>
 
-            <div class="card-body">
-                <p>Click below to go to login page</p>
-                <p>
-                    <a routerLink="/">Go Back Home</a>
-                </p>
-            </div>
-        </div>
+      <div class="card-body">
+        <p>Click below to go to login page</p>
+        <p>
+          <a routerLink="/">Go Back Home</a>
+        </p>
+      </div>
     </div>
+  </div>
 </div>

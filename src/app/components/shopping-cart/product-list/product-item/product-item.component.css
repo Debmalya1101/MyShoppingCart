@@ -1,3 +1,7 @@
 .pcard{
     height: 470px;
 }
+
+img{
+    object-fit: contain;
+}

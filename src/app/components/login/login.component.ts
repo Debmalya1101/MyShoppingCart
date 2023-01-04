@@ -36,8 +36,14 @@ export class LoginComponent implements OnInit {
       },
       error=>{
         // console.log("exception occured");
+        let resetForm:HTMLFormElement;
+        resetForm= <HTMLFormElement>document.getElementById('lform');
+        resetForm.reset()
+        setTimeout(() => {
+          this.msg=''
+        }, 2000);
         this.toastr.error('Invalid Credentials', 'ERROR!',{
-          timeOut:5000,
+          timeOut:2000,
           closeButton: true,
           progressBar: true,
         });

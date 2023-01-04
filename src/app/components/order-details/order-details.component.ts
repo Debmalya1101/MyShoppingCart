@@ -53,6 +53,11 @@ export class OrderDetailsComponent implements OnInit {
     this.orderService.order.address=this.orderDetailsForm.get('address')?.value;
     this.orderService.order.email=this.orderDetailsForm.get('email')?.value;
 
+    
+    // history.pushState(null, '', location.href);
+    // window.onpopstate = function () {
+    //   history.go(1);
+    // };
     let q = confirm("Are you sure you want to place the order?\nClick 'OK' to continue.")
     if(q){
       this.router.navigate(['/buy']);

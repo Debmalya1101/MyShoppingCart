@@ -1,47 +1,8 @@
 <div>
   <app-nav></app-nav>
 </div>
-<div class="container">
-  <!-- <table class="table table-bordered">
-    <thead class="table-secondary">
-      <tr>
-        <th>OrderId</th>
-        <th>Order Date</th>
-        <th>Products</th>
-        <th>Total Price</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let order of orders">
-        <td>{{order.orderId}}</td>
-        <td>{{order.orderDate}}</td>
-        <td>{{order.products}}</td>
-        <td>{{order.total}}</td>
-      </tr>
-    </tbody>
-  </table> -->
-
-  <!-- <table class="table-bordered">
-    <thead class="table-secondary">
-      <tr>
-        <th>OrderId</th>
-        <th>Order Date</th>
-        <th>Products</th>
-        <th>Total Price</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let order of orders">
-        <td>{{order.orderId}}</td>
-        <td>{{order.orderDate}}</td>
-        <td>{{order.products}}</td>
-        <td>{{order.total}}</td>
-      </tr>
-    </tbody>
-  </table> -->
-
-
-  <div class="card shadow p-3 mb-4 bg-white rounded" *ngFor="let order of orders| paginate: { itemsPerPage: 8, currentPage: p }">
+<div class="container p-0">
+  <!-- <div class="card shadow p-3 mb-4 bg-white rounded" *ngFor="let order of orders| paginate: { itemsPerPage: 8, currentPage: p }">
     <div class="card-title shadow-sm rounded">
       <strong>OrderID : #00{{order.orderId}}</strong>
     </div>
@@ -53,9 +14,9 @@
         <strong class="text-secondary">Delivery Address : </strong>{{order.address}} <br>
         <strong class="text-secondary">Ordered On : </strong>{{order.orderDate}}
       </div>
-      <div class="col-md-4">
+      <div class="col-md-4 bg-secondary bg-opacity-10">
         <strong class="text-secondary"> Products : </strong><br>
-        <!-- {{order.products}} --> <p [innerText]="order.products"></p>
+        <p [innerText]="order.products"></p>
       </div>
 
       <div class="col-md-3">
@@ -67,8 +28,68 @@
   </div>
 
   <pagination-controls (pageChange)="p = $event" align="center" style="font-size: large;color: rgb(60, 60, 60);"></pagination-controls>
-  <br>
+  <br> -->
+
+  <div
+    class="card flex shadow mb-4 bg-white rounded"
+    *ngFor="
+      let order of orders | paginate : { itemsPerPage: 8, currentPage: p }
+    "
+  >
+    <div class="row d-flex bg-secondary m-0 pt-2 pb-2 bg-opacity-10 rounded">
+      <div class="col">
+        <strong class="text-success" style="font-size: large"
+          >OrderID : #00{{ order.orderId }}</strong
+        >
+      </div>
+      <div class="col">
+        <div
+          class="float-end text-dark"
+          style="font-weight: 700; font-size: large"
+        >
+          <strong class="text-dark">Total : </strong>
+          {{ order.total | currency : "INR" }}
+        </div>
+      </div>
+    </div>
+    <div class="row d-flex m-0 w-100 pt-1">
+      <div class="col pb-2 detail-flex">
+        <div>
+          <strong class="text-secondary">Ordered On : </strong
+          >{{ order.orderDate }}
+        </div>
+        <div>
+          <span class="text-secondary" style="font-weight: bold"
+            >Order By : </span
+          >{{ order.name }}
+        </div>
+        <div>
+          <span class="text-secondary" style="font-weight: bolder"
+            >Contact No : </span
+          >{{ order.phoneNo }}
+        </div>
+        <div>
+          <strong class="text-secondary">Email : </strong>{{ order.email }}
+        </div>
+        <div>
+          <strong class="text-secondary">Delivery Address : </strong
+          >{{ order.address }}
+        </div>
+      </div>
+      <div class="col ms-5">
+        <strong class="text-secondary"> Products : </strong><br />
+        <p [innerText]="order.products"></p>
+      </div>
+    </div>
+  </div>
+
+  <pagination-controls
+    class="my-pagination"
+    (pageChange)="p = $event"
+    align="center"
+    style="font-size: large; color: rgb(60, 60, 60)"
+  ></pagination-controls>
+  <br />
 
   <app-footer></app-footer>
-
 </div>
