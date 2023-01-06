@@ -1,3 +1,4 @@
+import { AuthGuard } from './components/shared/auth/auth.guard';
 import { ProductDetailsComponent } from './components/shopping-cart/product-details/product-details.component';
 import { OrderDetailsComponent } from './components/order-details/order-details.component';
 import { OrdersComponent } from './components/shared/nav/orders/orders.component';
@@ -18,13 +19,13 @@ const routes : Routes = [
     {path:'', redirectTo:'/login', pathMatch:'full'},
     {path:'login', component:LoginComponent},
     {path:'register', component:RegisterComponent},
-    {path:'shop', component:ShoppingCartComponent},
-    {path:'buy', component:PaymentpageComponent},
-    {path:'paysuccess', component:PaymentsuccessComponent},
-    {path:'profile', component:ProfileComponent},
-    {path:'myorders', component:OrdersComponent},
-    {path:'orderDetails', component:OrderDetailsComponent},
-    {path:'productDetails', component:ProductDetailsComponent},
+    {path:'shop', component:ShoppingCartComponent, canActivate:[AuthGuard]},
+    {path:'buy', component:PaymentpageComponent, canActivate:[AuthGuard]},
+    {path:'paysuccess', component:PaymentsuccessComponent, canActivate:[AuthGuard]},
+    {path:'profile', component:ProfileComponent, canActivate:[AuthGuard]},
+    {path:'myorders', component:OrdersComponent, canActivate:[AuthGuard]},
+    {path:'orderDetails', component:OrderDetailsComponent, canActivate:[AuthGuard]},
+    {path:'productDetails', component:ProductDetailsComponent, canActivate:[AuthGuard]},
     {path:'**', component:PageNotFoundComponent}
 ]
 

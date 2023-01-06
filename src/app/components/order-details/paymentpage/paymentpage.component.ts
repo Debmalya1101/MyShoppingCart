@@ -21,7 +21,6 @@ export class PaymentpageComponent implements OnInit {
   ngOnInit(): void {
     this.user=JSON.parse(localStorage.getItem('user')!)
     this.loadCartItems();
-    console.log(this.orderSevice.order)
   }
 
   loadCartItems(){
@@ -39,7 +38,6 @@ export class PaymentpageComponent implements OnInit {
   }
 
   updateOrderHistory(){
-    console.log(this.cartItems)
     this.orderSevice.addToOrderHistory(this.cartItems,this.user).subscribe(data=>{
       // console.log(data)
     })

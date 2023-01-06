@@ -15,7 +15,6 @@ export class OrderHistoryService {
   constructor(private http:HttpClient) { }
 
   addToOrderHistory(cart:CartItem[], user:User):Observable<Object>{
-    console.log(this.order)
     return this.http.post<Object>("http://localhost:8080/myorders/"+user.id, this.order);
   }
 

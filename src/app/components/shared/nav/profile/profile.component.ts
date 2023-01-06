@@ -30,8 +30,8 @@ export class ProfileComponent implements OnInit {
     console.log(this.user)
     this.registrationService.updateUserFromRemote(this.user).subscribe(data=>{
       this.router.navigate(['/login']);
-      localStorage.removeItem('user');
-      localStorage.removeItem('loggedIn');
+      localStorage.clear()
+      sessionStorage.clear()
       this.toastr.success('You can now use your new password to log in to your account', 'Successful password reset!',{
         timeOut:2000,
         closeButton: true,
@@ -42,8 +42,8 @@ export class ProfileComponent implements OnInit {
 
   onClickLogout(){
     this.router.navigate(['/login']);
-    localStorage.removeItem('user')
-    localStorage.removeItem('loggedIn')
+    localStorage.clear()
+    sessionStorage.clear()
     this.toastr.success('You have successfully Logged out', 'Success!',{
       timeOut:2000,
       closeButton: true,

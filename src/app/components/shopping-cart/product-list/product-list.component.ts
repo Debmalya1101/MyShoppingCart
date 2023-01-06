@@ -26,6 +26,7 @@ export class ProductListComponent implements OnInit {
   productListLength!: number;
   public selectedPage = 1
   //ends here
+  pageNumbers!:number[]
 
   //for filter pagination
   isfilter:boolean=false
@@ -62,6 +63,8 @@ export class ProductListComponent implements OnInit {
       //for filter pagination
       this.isfilter=false
 
+      this.pageNumbers=Array(Math.ceil(this.productListLength / this.productsPerPage)).fill(0).map((x, i) => i + 1);
+
     });
   }
 
@@ -72,11 +75,11 @@ export class ProductListComponent implements OnInit {
     this.changePage(1)
   }
 
-  get pageNumbers(): number[] {
-    // console.log(this.productListLength)
-    return Array(Math.ceil(this.productListLength / this.productsPerPage))
-      .fill(0).map((x, i) => i + 1);
-  }
+  // get pageNumbers(): number[] {
+  //   // console.log(this.productListLength)
+  //   return Array(Math.ceil(this.productListLength / this.productsPerPage))
+  //     .fill(0).map((x, i) => i + 1);
+  // }
 
   changePage(page: any) {
     this.selectedPage = page;

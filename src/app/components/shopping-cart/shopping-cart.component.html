@@ -1,8 +1,5 @@
 <app-nav *ngIf="isloggedIn == 'true'"></app-nav>
-<!-- <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="isloggedIn=='true'">
-    <strong>Success!</strong>You have successfully logged in.
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div> -->
+
 <div class="container" *ngIf="isloggedIn == 'true'">
   <div class="row">
     <div class="col">
@@ -25,7 +22,7 @@
   </div>
 </div>
 
-<div class="row" *ngIf="isloggedIn != 'true'">
+<!-- <div class="row" *ngIf="isloggedIn != 'true'">
   <div class="col-md-4 offset-md-4">
     <div class="card">
       <div class="card-header">
@@ -40,4 +37,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->

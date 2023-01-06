@@ -57,7 +57,6 @@ export class ProductItemComponent implements OnInit {
   }
 
   handleViewDetails(){
-    console.log('sent')
     sessionStorage.setItem('product',JSON.stringify(this.productItem))
     this.detailsService.sendMsg(this.productItem);
   }

@@ -16,19 +16,16 @@ export class NavComponent implements OnInit {
 
   ngOnInit(): void {
     this.user=JSON.parse(localStorage.getItem('user')!)
-    // console.log(this.user.userName)
   }
 
   loggedOutUser(){
-    // this.router.navigate(['/login'], { replaceUrl: true });
-    localStorage.removeItem('user')
-    localStorage.removeItem('loggedIn')
+    localStorage.clear()
+    sessionStorage.clear()
     this.toastr.success('You have successfully Logged out', 'Success!',{
       timeOut:2000,
       closeButton: true,
       progressBar: true,
     });
-    // console.log('removed')
   }
 
 }

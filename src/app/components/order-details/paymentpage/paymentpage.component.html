@@ -1,75 +1,130 @@
 <html>
-    <body>
-        <div class="container-fluid">
-            <div class="row justify-content-center">
-                <div class="col-12 col-lg-11">
-                    <div class="card card0 rounded-0">
-                        <div class="row">
-                            <div class="col-md-5 d-md-block d-none p-0 box">
-                                <div class="card rounded-0 border-0 card1" id="bill">
-                                    <h3 id="heading1">Payment Summary</h3>
-                                    <div class="row" *ngFor="let item of cartItems">
-                                        <div class="col-lg-7 col-8 mt-4 line pl-4">
-                                            <h2 class="bill-head">{{item.productName}}</h2>
-                                            <small class="bill-date">x {{item.qty}}</small>
-                                        </div>
-                                        <div class="col-lg-5 col-4 mt-4">
-                                            <h2 class="bill-head px-xl-5 px-lg-4">{{ item.qty* item.price | currency:'INR'}}</h2>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12 red-bg">
-                                            <p class="bill-date" id="total-label">Total Price</p>
-                                            <h2 class="bill-head" id="total">{{ cartTotal | currency:'INR'}}</h2>
-                                            <small class="bill-date" id="total-label">Price includes all taxes</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-        
-                            <div class="col-md-7 col-sm-12 p-0 box">
-                                <div class="card rounded-0 border-0 card2" id="paypage">
-                                    <form #loginForm="ngForm">
-                                        <div class="form-card">
-                                            <h2 id="heading2" class="text-danger">Payment Method</h2>
-                                            <div class="radio-group">
-                                                <div class='radio' data-value="credit"><img src="https://i.imgur.com/28akQFX.jpg" width="200px" height="60px"></div>
-                                                <div class='radio' data-value="paypal"><img src="https://i.imgur.com/5QFsx7K.jpg" width="200px" height="60px"></div>
-                                                <br>
-                                            </div>
-                                            <label class="pay">Name on Card</label>
-                                            <input type="text" name="holdername" placeholder="John Smith" required>
-                                            <div class="row">
-                                                <div class="col-8 col-md-6">
-                                                    <label class="pay">Card Number</label>
-                                                    <input type="text" name="cardno" id="cr_no" placeholder="0000-0000-0000-0000" minlength="19" maxlength="19" required>
-                                                </div>
-                                                <div class="col-4 col-md-6">
-                                                    <label class="pay">CVV</label>
-                                                    <input type="password" name="cvcpwd" placeholder="&#9679;&#9679;&#9679;" class="placeicon" minlength="3" maxlength="3" required>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <label class="pay">Expiration Date</label>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <input type="text" name="exp" id="exp" placeholder="MM/YY" minlength="5" maxlength="5" required>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <button [disabled]="loginForm.form.invalid" class="btn btn-info paybutton" (click)="updateOrderHistory()" [routerLink]="['/paysuccess']">MAKE A PAYMENT</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
+  <body>
+    <div class="container-fluid">
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-11">
+          <div class="card card0 rounded-0">
+            <div class="row">
+              <div class="col-md-5 d-md-block d-none p-0 box">
+                <div class="card rounded-0 border-0 card1" id="bill">
+                  <h3 id="heading1">Payment Summary</h3>
+                  <div class="row" *ngFor="let item of cartItems">
+                    <div class="col-lg-7 col-8 mt-4 line pl-4">
+                      <h2 class="bill-head">{{ item.productName }}</h2>
+                      <small class="bill-date">x {{ item.qty }}</small>
                     </div>
+                    <div class="col-lg-5 col-4 mt-4">
+                      <h2 class="bill-head px-xl-5 px-lg-4">
+                        {{ item.qty * item.price | currency : "INR" }}
+                      </h2>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12 red-bg">
+                      <p class="bill-date" id="total-label">Total Price</p>
+                      <h2 class="bill-head" id="total">
+                        {{ cartTotal | currency : "INR" }}
+                      </h2>
+                      <small class="bill-date" id="total-label"
+                        >Price includes all taxes</small
+                      >
+                    </div>
+                  </div>
                 </div>
+              </div>
+
+              <div class="col-md-7 col-sm-12 p-0 box">
+                <div class="card rounded-0 border-0 card2" id="paypage">
+                  <form #loginForm="ngForm">
+                    <div class="form-card">
+                      <h2 id="heading2" class="text-danger">Payment Method</h2>
+                      <div class="radio-group">
+                        <div class="radio" data-value="credit">
+                          <img
+                            src="https://i.imgur.com/28akQFX.jpg"
+                            width="200px"
+                            height="60px"
+                          />
+                        </div>
+                        <div class="radio" data-value="paypal">
+                          <img
+                            src="https://i.imgur.com/5QFsx7K.jpg"
+                            width="200px"
+                            height="60px"
+                          />
+                        </div>
+                        <br />
+                      </div>
+                      <label class="pay">Name on Card</label>
+                      <input
+                        type="text"
+                        name="holdername"
+                        placeholder="John Smith"
+                        required
+                      />
+                      <div class="row">
+                        <div class="col-8 col-md-6">
+                          <label class="pay">Card Number</label>
+                          <input
+                            type="text"
+                            name="cardno"
+                            id="cr_no"
+                            placeholder="0000-0000-0000-0000"
+                            minlength="19"
+                            maxlength="19"
+                            required
+                          />
+                        </div>
+                        <div class="col-4 col-md-6">
+                          <label class="pay">CVV</label>
+                          <input
+                            type="password"
+                            name="cvcpwd"
+                            placeholder="&#9679;&#9679;&#9679;"
+                            class="placeicon"
+                            minlength="3"
+                            maxlength="3"
+                            required
+                          />
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12">
+                          <label class="pay">Expiration Date</label>
+                        </div>
+                        <div class="col-md-12">
+                          <input
+                            type="text"
+                            name="exp"
+                            id="exp"
+                            placeholder="MM/YY"
+                            minlength="5"
+                            maxlength="5"
+                            required
+                          />
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <button
+                            type="button"
+                            [disabled]="loginForm.form.invalid"
+                            class="btn btn-info paybutton"
+                            (click)="updateOrderHistory()"
+                            [routerLink]="['/paysuccess']"
+                          >
+                            MAKE A PAYMENT
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
-    </body>
+      </div>
+    </div>
+  </body>
 </html>
