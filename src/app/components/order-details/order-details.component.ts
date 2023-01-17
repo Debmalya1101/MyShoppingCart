@@ -1,6 +1,6 @@
 import { OrderHistoryService } from './../../services/order-history.service';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup,FormControl, Validators } from '@angular/forms';
+import { UntypedFormGroup,UntypedFormControl, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 
@@ -13,12 +13,12 @@ export class OrderDetailsComponent implements OnInit {
 
   
 
-  orderDetailsForm = new FormGroup({
-    fname:new FormControl('',[Validators.required, Validators.minLength(4)]),
-    lname:new FormControl('',[Validators.required, Validators.minLength(4)]),
-    email:new FormControl('',[Validators.required, Validators.pattern('[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-zA-Z]{2,4}')]),
-    phoneno:new FormControl('',[Validators.required,Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]),
-    address:new FormControl('',[Validators.required])
+  orderDetailsForm = new UntypedFormGroup({
+    fname:new UntypedFormControl('',[Validators.required, Validators.minLength(4)]),
+    lname:new UntypedFormControl('',[Validators.required, Validators.minLength(4)]),
+    email:new UntypedFormControl('',[Validators.required, Validators.pattern('[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-zA-Z]{2,4}')]),
+    phoneno:new UntypedFormControl('',[Validators.required,Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]),
+    address:new UntypedFormControl('',[Validators.required])
   })
 
   constructor(private orderService:OrderHistoryService, private toastr: ToastrService, private router:Router) { }

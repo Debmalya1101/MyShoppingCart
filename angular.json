@@ -109,5 +109,7 @@
       }
     }
   },
-  "defaultProject": "shopping-cart"
+  "cli": {
+    "analytics": "1a243d03-95d0-4efc-8508-e2dc02ab6ae9"
+  }
 }
