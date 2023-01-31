@@ -30,12 +30,14 @@ export class LoginComponent implements OnInit {
         });
         this.msg=''
         this.router.navigate(['/shop']);
-        this.service.loggedInUser=data;
-        localStorage.setItem('user',JSON.stringify(data))
-        localStorage.setItem('loggedIn','true')
+        // this.service.loggedInUser=data;
+        // localStorage.setItem('user',JSON.stringify(data))
+        // localStorage.setItem('loggedIn','true')
+        sessionStorage.setItem('token',JSON.stringify(data))
       },
       error=>{
         // console.log("exception occured");
+        console.log(error.message)
         let resetForm:HTMLFormElement;
         resetForm= <HTMLFormElement>document.getElementById('lform');
         resetForm.reset()

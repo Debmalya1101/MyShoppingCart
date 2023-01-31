@@ -12,7 +12,7 @@ export class ShoppingCartComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.isloggedIn=localStorage.getItem('loggedIn')!
+    
   }
 
 }

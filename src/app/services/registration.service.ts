@@ -8,12 +8,12 @@ import { User } from '../models/user';
 })
 export class RegistrationService {
 
-  loggedInUser!:User
+  // loggedInUser!:User
 
   constructor(private http : HttpClient) { }
 
   public loginUserFromRemote(user:User):Observable<any>{
-    return this.http.post<any>("http://localhost:8080/login",user);
+    return this.http.post("http://localhost:8080/login",user,{responseType: 'text'});
   }
 
   public registerUserFromRemote(user:User):Observable<any>{

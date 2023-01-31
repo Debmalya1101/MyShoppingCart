@@ -7,6 +7,7 @@ import { Product } from './../../../models/product';
 import { Component, OnInit } from '@angular/core';
 
 import { ProductService } from 'src/app/services/product.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-product-list',
@@ -37,7 +38,8 @@ export class ProductListComponent implements OnInit {
   constructor(private productService: ProductService,
     private wishlistService: WishlistService,
     private filtermsg: FiltermessengerService,
-    private resetpricefiltermsg: ResetpricefiltermessengerService
+    private resetpricefiltermsg: ResetpricefiltermessengerService,
+    public jwtHelper: JwtHelperService
   ) { }
 
   ngOnInit(): void {
@@ -131,7 +133,9 @@ export class ProductListComponent implements OnInit {
 
   //wishlist function
   loadWishlist() {
-    this.user = JSON.parse(localStorage.getItem('user')!)
+    this.user = this.jwtHelper.decodeToken(JSON.parse(sessionStorage.getItem('token')!))!
+    console.log(this.user)
+    // this.user = JSON.parse(localStorage.getItem('user')!)
     this.wishlistService.getWishlist(this.user).subscribe(data => {
       data.forEach((w: any) => this.wishlist.push(w.productId));
       //console.log(this.wishlist)

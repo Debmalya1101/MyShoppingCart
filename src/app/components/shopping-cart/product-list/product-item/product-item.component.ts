@@ -7,6 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Product } from 'src/app/models/product';
 import { MessengerService } from 'src/app/services/messenger.service';
 import { CartService } from 'src/app/services/cart.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-product-item',
@@ -26,7 +27,8 @@ export class ProductItemComponent implements OnInit {
               private cartService:CartService,
               private wishlistService:WishlistService,
               private regservice:RegistrationService,
-              private detailsService:ProductDetailsMessangerService
+              private detailsService:ProductDetailsMessangerService,
+              public jwtHelper: JwtHelperService
     ) { }
 
   ngOnInit(): void {
@@ -34,14 +36,16 @@ export class ProductItemComponent implements OnInit {
 
   handleAddtocart(){
     //console.log(this.productItem);
-    this.u=JSON.parse(localStorage.getItem('user')!)
+    // this.u=JSON.parse(localStorage.getItem('user')!)
+    this.u = this.jwtHelper.decodeToken(JSON.parse(sessionStorage.getItem('token')!))!
     this.cartService.addProductToCart(this.productItem, this.u).subscribe(data=>{
       this.msg.sendMsg(this.productItem);
     });
   }
 
   handleAddToWishlist(){
-    this.u=JSON.parse(localStorage.getItem('user')!)
+    // this.u=JSON.parse(localStorage.getItem('user')!)
+    this.u = this.jwtHelper.decodeToken(JSON.parse(sessionStorage.getItem('token')!))!
     this.wishlistService.addToWishlist(this.productItem,this.u).subscribe(()=>{
       this.addedToWishlist=true
       this.msg.sendMsg(this.productItem);
@@ -49,7 +53,8 @@ export class ProductItemComponent implements OnInit {
   }
 
   handleRemoveFromWishlist(){
-    this.u=JSON.parse(localStorage.getItem('user')!)
+    // this.u=JSON.parse(localStorage.getItem('user')!)
+    this.u = this.jwtHelper.decodeToken(JSON.parse(sessionStorage.getItem('token')!))!
     this.wishlistService.removeFromWishList(this.productItem,this.u).subscribe(()=>{
       this.addedToWishlist=false
       this.msg.sendMsg(this.productItem);

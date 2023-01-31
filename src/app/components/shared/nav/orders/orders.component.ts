@@ -2,6 +2,7 @@ import { User } from './../../../../models/user';
 import { Orders } from './../../../../models/orders';
 import { OrderHistoryService } from './../../../../services/order-history.service';
 import { Component, OnInit } from '@angular/core';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-orders',
@@ -15,10 +16,11 @@ export class OrdersComponent implements OnInit {
 
   p: number = 1;
 
-  constructor(private orderService:OrderHistoryService) { }
+  constructor(private orderService:OrderHistoryService, public jwtHelper: JwtHelperService) { }
 
   ngOnInit(): void {
-    this.user=JSON.parse(localStorage.getItem('user')!)
+    // this.user=JSON.parse(localStorage.getItem('user')!)
+    this.user = this.jwtHelper.decodeToken(JSON.parse(sessionStorage.getItem('token')!))!
     this.loadOrderHistory();
   }
 
