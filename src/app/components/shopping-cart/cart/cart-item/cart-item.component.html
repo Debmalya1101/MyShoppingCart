@@ -1,25 +1,20 @@
 <div class="cart-item">
-    <p><span>{{cartItem.productName}}</span></p>
-    <div id="cart-row">
-        <div class="cart-row-line">
-            <!-- <button class="quantity">
-                <span class="material-symbols-outlined">
-                add
-                </span>
-            </button> -->
-            <span>x {{cartItem.qty}} : </span>
-            <!-- <button class="quantity">
-                <span class="material-symbols-outlined">
-                remove
-                </span>
-            </button> -->
-            <strong>{{ cartItem.qty*cartItem.price | currency:'INR'}}</strong>
-        </div>
-        <button class="btn-dlt cart-row-line" (click)="deleteCart()">
-            <span class="material-symbols-rounded">
-                cancel
-            </span>
-        </button>
-
+  <p>
+    <span>{{ cartItem.productName }}</span>
+  </p>
+  <div id="cart-row">
+    <div class="cart-row-line">
+      <div>
+        <button class="qbutton" (click)="decreaseQuantity()">-</button>
+        <span> {{ cartItem.qty }} </span>
+        <button class="qbutton" (click)="increaseQuantity()">+</button>
+      </div>
+      <div>
+        <strong>{{ cartItem.qty * cartItem.price | currency : "INR" }}</strong>
+      </div>
     </div>
+    <button class="btn-dlt cart-row-line" (click)="deleteCart()">
+      <span class="material-symbols-rounded"> cancel </span>
+    </button>
+  </div>
 </div>

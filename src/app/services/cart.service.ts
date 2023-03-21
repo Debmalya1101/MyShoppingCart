@@ -36,4 +36,12 @@ export class CartService {
   removeAllProductFromCart(user:User):Observable<Object>{
     return this.http.delete<Object>("http://localhost:8080/cartall/"+user.id);
   }
+
+  decreaseQuantityCart(id:number):Observable<Object>{
+    return this.http.post<Object>("http://localhost:8080/cart/decrease/"+id,"")
+  }
+
+  increaseQuantityCart(id:number):Observable<Object>{
+    return this.http.post<Object>("http://localhost:8080/cart/increase/"+id,"")
+  }
 }
