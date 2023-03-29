@@ -34,6 +34,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { JwtModule } from '@auth0/angular-jwt';
 
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { Ng2SearchPipe } from 'ng2-search-filter';
+
 
 @NgModule({
   declarations: [
@@ -69,6 +72,7 @@ import { JwtModule } from '@auth0/angular-jwt';
     ReactiveFormsModule,
     CommonModule,
     BrowserAnimationsModule, // required animations module
+    Ng2SearchPipeModule,
     ToastrModule.forRoot(),
     JwtModule.forRoot({
       config: {
