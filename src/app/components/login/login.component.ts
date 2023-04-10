@@ -4,6 +4,9 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import * as CryptoJS from 'crypto-js';
+import { EncryptionservicService } from 'src/app/services/encryptionservic.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-login',
@@ -15,12 +18,18 @@ export class LoginComponent implements OnInit {
   user = new User();
   msg='';
 
-  constructor(private service : RegistrationService, private router:Router, private toastr: ToastrService) { }
+  constructor(private service : RegistrationService, 
+              private router:Router, 
+              private toastr: ToastrService,
+              private encryptionService: EncryptionservicService,
+              public jwtHelper: JwtHelperService
+              ) { }
 
   ngOnInit(): void {
   }
 
   loginUser(){
+    this.user.password = this.encryptionService.encryptPassword(this.user.password)
     this.service.loginUserFromRemote(this.user).subscribe(
       data=>{
         this.toastr.success('Login Successful', 'Success!',{
@@ -29,11 +38,16 @@ export class LoginComponent implements OnInit {
           progressBar: true,
         });
         this.msg=''
-        this.router.navigate(['/shop']);
-        // this.service.loggedInUser=data;
-        // localStorage.setItem('user',JSON.stringify(data))
-        // localStorage.setItem('loggedIn','true')
         sessionStorage.setItem('token',JSON.stringify(data))
+        this.user = this.jwtHelper.decodeToken(JSON.parse(sessionStorage.getItem('token')!))!
+        if(this.user.role==='ROLE_ADMIN'){
+          this.router.navigate(['/admin']);
+          console.log('admin');
+        }
+        else{
+          console.log('user')
+          this.router.navigate(['/shop']);
+        }
       },
       error=>{
         // console.log("exception occured");

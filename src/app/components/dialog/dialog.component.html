@@ -1,0 +1,81 @@
+<h1 mat-dialog-title>Add Product Form</h1>
+<div mat-dialog-content>
+  <form [formGroup]="productForm">
+    <mat-form-field appearance="outline">
+      <mat-label>Product Name</mat-label>
+      <input formControlName="name" matInput placeholder="Placeholder" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Description</mat-label>
+      <input formControlName="description" matInput placeholder="Placeholder" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Price</mat-label>
+      <input
+        formControlName="price"
+        matInput
+        type="number"
+        placeholder="Placeholder"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>ImageUrl</mat-label>
+      <input formControlName="imageUrl" matInput placeholder="Placeholder" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Details</mat-label>
+      <textarea
+        formControlName="details"
+        matInput
+        placeholder="placeholder"
+        style="resize: none"
+      ></textarea>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>OS</mat-label>
+      <input formControlName="os" matInput placeholder="Placeholder" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Processor</mat-label>
+      <input formControlName="processor" matInput placeholder="Placeholder" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>RAM | ROM</mat-label>
+      <input formControlName="ram_rom" matInput placeholder="Ex: 8GB | 128GB" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Rear Camera</mat-label>
+      <input formControlName="rear_camera" matInput placeholder="Placeholder" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Front Camera</mat-label>
+      <input
+        formControlName="front_camera"
+        matInput
+        placeholder="Placeholder"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Display</mat-label>
+      <input formControlName="display" matInput placeholder="Placeholder" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Battery</mat-label>
+      <input formControlName="battery" matInput placeholder="Placeholder" />
+    </mat-form-field>
+  </form>
+</div>
+
+<div mat-dialog-action [align]="'end'">
+  <button
+    mat-raised-button
+    color="primary"
+    [disabled]="productForm.invalid || !productForm.dirty"
+    (click)="addProduct()"
+  >
+    {{ actionBtn }}
+  </button>
+  <button mat-raised-button class="ms-2" color="warn" mat-dialog-close="">
+    Close
+  </button>
+</div>

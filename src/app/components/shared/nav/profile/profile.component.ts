@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { EncryptionservicService } from 'src/app/services/encryptionservic.service';
 
 @Component({
   selector: 'app-profile',
@@ -17,7 +18,11 @@ export class ProfileComponent implements OnInit {
   npass!:string
   ncpass!:string
 
-  constructor(private registrationService:RegistrationService, private router:Router, private toastr: ToastrService, public jwtHelper: JwtHelperService) { }
+  constructor(private registrationService:RegistrationService, 
+              private router:Router, 
+              private toastr: ToastrService, 
+              private encryptionService: EncryptionservicService,
+              public jwtHelper: JwtHelperService) { }
 
   ngOnInit(): void {
     // this.user=JSON.parse(localStorage.getItem('user')!)
@@ -29,7 +34,7 @@ export class ProfileComponent implements OnInit {
     this.cpass=true;
   }
   onClickSaveChanges(){
-    this.user.password=this.npass;
+    this.user.password=this.encryptionService.encryptPassword(this.npass);
     console.log(this.user)
     this.registrationService.updateUserFromRemote(this.user).subscribe(data=>{
       this.router.navigate(['/login']);

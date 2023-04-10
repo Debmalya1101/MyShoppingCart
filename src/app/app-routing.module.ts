@@ -1,3 +1,4 @@
+import { AdminhomeComponent } from './components/adminhome/adminhome.component';
 import { AuthGuard } from './components/shared/auth/auth.guard';
 import { ProductDetailsComponent } from './components/shopping-cart/product-details/product-details.component';
 import { OrderDetailsComponent } from './components/order-details/order-details.component';
@@ -19,13 +20,30 @@ const routes : Routes = [
     {path:'', redirectTo:'/login', pathMatch:'full'},
     {path:'login', component:LoginComponent},
     {path:'register', component:RegisterComponent},
-    {path:'shop', component:ShoppingCartComponent, canActivate:[AuthGuard]},
-    {path:'buy', component:PaymentpageComponent, canActivate:[AuthGuard]},
-    {path:'paysuccess', component:PaymentsuccessComponent, canActivate:[AuthGuard]},
-    {path:'profile', component:ProfileComponent, canActivate:[AuthGuard]},
-    {path:'myorders', component:OrdersComponent, canActivate:[AuthGuard]},
-    {path:'orderDetails', component:OrderDetailsComponent, canActivate:[AuthGuard]},
-    {path:'productDetails', component:ProductDetailsComponent, canActivate:[AuthGuard]},
+    {path:'shop', component:ShoppingCartComponent, canActivate:[AuthGuard], data:{
+        roles:["ROLE_ADMIN", "ROLE_USER"]
+    }},
+    {path:'buy', component:PaymentpageComponent, canActivate:[AuthGuard], data:{
+        roles:["ROLE_ADMIN", "ROLE_USER"]
+    }},
+    {path:'paysuccess', component:PaymentsuccessComponent, canActivate:[AuthGuard], data:{
+        roles:["ROLE_ADMIN", "ROLE_USER"]
+    }},
+    {path:'profile', component:ProfileComponent, canActivate:[AuthGuard], data:{
+        roles:["ROLE_ADMIN", "ROLE_USER"]
+    }},
+    {path:'myorders', component:OrdersComponent, canActivate:[AuthGuard], data:{
+        roles:["ROLE_ADMIN", "ROLE_USER"]
+    }},
+    {path:'orderDetails', component:OrderDetailsComponent, canActivate:[AuthGuard], data:{
+        roles:["ROLE_ADMIN", "ROLE_USER"]
+    }},
+    {path:'productDetails', component:ProductDetailsComponent, canActivate:[AuthGuard], data:{
+        roles:["ROLE_ADMIN", "ROLE_USER"]
+    }},
+    {path:'admin', component:AdminhomeComponent, canActivate:[AuthGuard],data:{
+        roles:["ROLE_ADMIN"]
+    }},
     {path:'**', component:PageNotFoundComponent}
 ]
 

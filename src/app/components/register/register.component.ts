@@ -1,7 +1,9 @@
+import { EncryptionservicService } from './../../services/encryptionservic.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user';
 import { RegistrationService } from 'src/app/services/registration.service';
+import * as CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'app-register',
@@ -14,12 +16,16 @@ export class RegisterComponent implements OnInit {
   msg='';
 
   constructor(private service:RegistrationService,
+              private encryptionService: EncryptionservicService,
               private router:Router) { }
 
   ngOnInit(): void {
   }
 
   registerUser(){
+     
+    this.user.password = this.encryptionService.encryptPassword(this.user.password);
+    
     this.service.registerUserFromRemote(this.user).subscribe(
       data=>{
         console.log('response received');

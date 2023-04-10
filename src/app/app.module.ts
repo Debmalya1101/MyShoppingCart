@@ -36,6 +36,16 @@ import { JwtModule } from '@auth0/angular-jwt';
 
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { Ng2SearchPipe } from 'ng2-search-filter';
+import { AdminhomeComponent } from './components/adminhome/adminhome.component';
+
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table' ;
+import { MatButtonModule} from '@angular/material/button';
+import {MatDialogModule} from '@angular/material/dialog';
+import { DialogComponent } from './components/dialog/dialog.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatIconModule} from '@angular/material/icon';
+import { ConfirmdialogComponent } from './components/confirmdialog/confirmdialog.component';
 
 
 @NgModule({
@@ -61,6 +71,9 @@ import { Ng2SearchPipe } from 'ng2-search-filter';
     OrderDetailsComponent,
     PaymentpageComponent,
     ProductDetailsComponent,
+    AdminhomeComponent,
+    DialogComponent,
+    ConfirmdialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -68,7 +81,13 @@ import { Ng2SearchPipe } from 'ng2-search-filter';
     AppRoutingModule,
     FormsModule,
     NgxPaginationModule,
+    MatPaginatorModule,
     MatInputModule,
+    MatTableModule,
+    MatButtonModule,
+    MatDialogModule,
+    MatIconModule,
+    MatFormFieldModule,
     ReactiveFormsModule,
     CommonModule,
     BrowserAnimationsModule, // required animations module

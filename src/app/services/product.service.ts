@@ -35,6 +35,20 @@ export class ProductService {
 
   }
 
+  addProducts(product:Product): Observable<Product>{
+
+    return this.http.post<Product>("http://localhost:8080/products", product);
+
+  }
+  
+  updateProduct(product:Product): Observable<Product>{
+    return this.http.put<Product>("http://localhost:8080/products", product);
+  }
+
+  deleteProduct(product:Product){
+    return this.http.delete<Product>("http://localhost:8080/products/"+product.id);
+  }
+
   getProductByPrice(start:number,end:number){
     return this.http.get<Product[]>("http://localhost:8080/products/"+start+"/"+end);
   }
