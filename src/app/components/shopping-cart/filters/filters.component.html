@@ -1,21 +1,49 @@
 <div class="card filters">
-    <div class="card-header">
-        <strong><i class="fa fa-filter"></i> Filters</strong>
-    </div>
-    <div class="card-body">
-        <form #filterform="ngForm">
-            <div class="form-group">
-                <label for="from">From</label>
-                <input type="number" id="form" name="first" class="form-control" [(ngModel)]="filter.start" required>
-            </div>
-        
-            <div class="form-group">
-                <label for="to">To</label>
-                <input type="number" id="form" name="end" class="form-control" [(ngModel)]="filter.end" required>
-            </div><br>
-        
-            <button *ngIf="pricefilter" [disabled]="filterform.form.invalid" class="btn btn-primary btn-block w-100" (click)="handlefilter()">Filter By Price</button>
-            <button *ngIf="resetpricefilter" class="btn btn-info btn-block w-100" (click)="resetfilter()">Reset</button>
-        </form>
-    </div>
+  <div class="card-header">
+    <strong><i class="fa fa-filter"></i> Filters</strong>
+  </div>
+  <div class="card-body">
+    <form #filterform="ngForm">
+      <div class="form-group">
+        <label for="from">From</label>
+        <input
+          type="number"
+          id="form"
+          name="first"
+          class="form-control"
+          [(ngModel)]="filter.start"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="to">To</label>
+        <input
+          type="number"
+          id="form"
+          name="end"
+          class="form-control"
+          [(ngModel)]="filter.end"
+          required
+        />
+      </div>
+      <br />
+
+      <button
+        *ngIf="pricefilter"
+        [disabled]="filterform.form.invalid"
+        class="btn btn-primary btn-block w-100"
+        (click)="handlefilter()"
+      >
+        Filter By Price
+      </button>
+      <button
+        *ngIf="resetpricefilter"
+        class="btn btn-info btn-block w-100"
+        (click)="resetfilter()"
+      >
+        Reset
+      </button>
+    </form>
+  </div>
 </div>

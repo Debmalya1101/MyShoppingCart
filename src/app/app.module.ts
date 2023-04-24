@@ -45,6 +45,9 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { DialogComponent } from './components/dialog/dialog.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatCardModule} from '@angular/material/card';
+import {MatSelectModule} from '@angular/material/select';
 import { ConfirmdialogComponent } from './components/confirmdialog/confirmdialog.component';
 
 
@@ -87,6 +90,9 @@ import { ConfirmdialogComponent } from './components/confirmdialog/confirmdialog
     MatButtonModule,
     MatDialogModule,
     MatIconModule,
+    MatCheckboxModule,
+    MatSelectModule,
+    MatCardModule,
     MatFormFieldModule,
     ReactiveFormsModule,
     CommonModule,

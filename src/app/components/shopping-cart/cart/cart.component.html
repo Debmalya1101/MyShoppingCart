@@ -1,38 +1,47 @@
 <div class="card filters">
-    <div class="card-header">
-        <strong><i class="fa fa-shopping-cart"></i> My Cart</strong>
-    </div>
-<div *ngIf="cartItems.length === 0" class="mty">Cart is Emplty!</div>
-<div *ngIf="cartItems.length > 0" class="cnt">
+  <div class="card-header">
+    <strong><i class="fa fa-shopping-cart"></i> My Cart</strong>
+  </div>
+  <div *ngIf="cartItems.length === 0" class="mty">Cart is Emplty!</div>
+  <div *ngIf="cartItems.length > 0" class="cnt">
     <ul class="list-group">
-        <li class="list-group-item" *ngFor="let item of cartItems">
-            <app-cart-item [cartItem]="item"></app-cart-item>
-        </li>
-    </ul>  
-</div>
-<ul class="list-group" *ngIf="cartItems.length > 0">
+      <li class="list-group-item" *ngFor="let item of cartItems">
+        <app-cart-item [cartItem]="item"></app-cart-item>
+      </li>
+    </ul>
+  </div>
+  <ul class="list-group" *ngIf="cartItems.length > 0">
     <li class="list-group-item active">
-        <strong>Total : {{ cartTotal | currency:'INR'}}</strong>
+      <strong>Total : {{ cartTotal | currency : "INR" }}</strong>
     </li>
-</ul>
+  </ul>
 
-<div class="card-footer text-center bg-dark text-white" *ngIf="cartItems.length > 0">
-    <a class="text-decoration-none text-warning" [routerLink]="['/orderDetails']"><strong>Buy Now</strong></a>
-</div>
+  <div
+    class="card-footer text-center bg-dark text-white"
+    *ngIf="cartItems.length > 0"
+  >
+    <a
+      class="text-decoration-none text-warning"
+      [routerLink]="['/orderDetails']"
+      ><strong>Buy Now</strong></a
+    >
+  </div>
 </div>
 
-<br>
+<br />
 <div class="card filters">
-    <div class="card-header">
-        <strong><i class="fa fa-heart" style="color:black"></i> My WishList</strong>
-    </div>
-    <div *ngIf="wishlist.length === 0" class="wmty">Wishlist is Emplty!</div>
-    <div *ngIf="wishlist.length > 0" class="wnt">
-        <ul class="list-group">
-            <li class="list-group-item" *ngFor="let item of wishlist">
-                <strong>Product : </strong>{{item.name}}<br>
-                <strong>Price : </strong>{{ item.price | currency:'INR'}}
-            </li>
-        </ul>  
-    </div>
+  <div class="card-header">
+    <strong
+      ><i class="fa fa-heart" style="color: black"></i> My WishList</strong
+    >
+  </div>
+  <div *ngIf="wishlist.length === 0" class="wmty">Wishlist is Emplty!</div>
+  <div *ngIf="wishlist.length > 0" class="wnt">
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let item of wishlist">
+        <strong>Product : </strong>{{ item.name }}<br />
+        <strong>Price : </strong>{{ item.price | currency : "INR" }}
+      </li>
+    </ul>
+  </div>
 </div>

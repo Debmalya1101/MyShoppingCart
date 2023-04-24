@@ -1,3 +1,4 @@
+import { User } from './../../models/user';
 import { ConfirmdialogComponent } from './../confirmdialog/confirmdialog.component';
 import { DialogComponent } from './../dialog/dialog.component';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
@@ -7,6 +8,8 @@ import { ToastrService } from 'ngx-toastr';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import { SelectionModel } from '@angular/cdk/collections';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-adminhome',
@@ -17,13 +20,16 @@ export class AdminhomeComponent implements OnInit {
 
   productList: Product[] = []
   p: number = 1;
+  user!:User;
 
-  displayedColumns: string[] = ['ProductID', 'Name', 'Description','Front_Camera','Rear_Camera','Price', 'Image', 'Action'];
+  displayedColumns: string[] = ['select','ProductID', 'Name', 'Description','Front_Camera','Rear_Camera','Price', 'Image', 'Action'];
   dataSource = new MatTableDataSource<Product>();
+  selection = new SelectionModel<Product>(true, []);
 
   constructor(private productService: ProductService,
               public dialog: MatDialog,
-              private toastr: ToastrService,) { }
+              private toastr: ToastrService,
+              public jwtHelper: JwtHelperService) { }
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -33,6 +39,7 @@ export class AdminhomeComponent implements OnInit {
   // }
 
   ngOnInit(): void {
+    this.user = this.jwtHelper.decodeToken(JSON.parse(sessionStorage.getItem('token')!))!
     this.getProducts()
   }
 
@@ -43,6 +50,30 @@ export class AdminhomeComponent implements OnInit {
       this.dataSource.data=data;
       this.dataSource.paginator=this.paginator;
     })
+  }
+
+  isAllSelected() {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource.data.length;
+    return numSelected === numRows;
+  }
+
+  /** Selects all rows if they are not all selected; otherwise clear selection. */
+  toggleAllRows() {
+    if (this.isAllSelected()) {
+      this.selection.clear();
+      return;
+    }
+
+    this.selection.select(...this.dataSource.data);
+  }
+
+  /** The label for the checkbox on the passed row */
+  checkboxLabel(row?: Product): string {
+    if (!row) {
+      return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
+    }
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id + 1}`;
   }
 
   openDialog(){
@@ -100,6 +131,44 @@ export class AdminhomeComponent implements OnInit {
         })
       }
     })
+  }
+
+  multipleDelete(){
+
+    this.dialog.open(ConfirmdialogComponent,{
+      width:'30%',
+      position:{top:'5rem'},
+      data:{
+        title: 'Confirm Remove Product(s)',
+        message: 'Are you sure, you want to delete the '+this.selection.selected.length+' Product(s)'
+      }
+    }).afterClosed().subscribe(data=>{
+      if(data){
+        this.selection.selected.forEach(data=>{
+          this.productService.deleteProduct(data).subscribe(data=>{
+            this.getProducts()
+          })
+        })
+        this.selection.clear()
+        this.toastr.success('Product Deleted', '',{
+          timeOut:2500,
+          positionClass: 'toast-bottom-center',
+          closeButton: true,
+          progressBar: true,
+        });
+      }
+    })
+
+  }
+
+
+  loggedOutUser(){
+    sessionStorage.clear()
+    this.toastr.success('You have successfully Logged out', 'Success!',{
+      timeOut:2000,
+      closeButton: true,
+      progressBar: true,
+    });
   }
 
 }

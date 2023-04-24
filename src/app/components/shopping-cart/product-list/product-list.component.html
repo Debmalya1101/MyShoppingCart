@@ -1,24 +1,22 @@
-<div class="row searchC">
+<!-- <div class="row searchC">
   <input
     type="text"
     [(ngModel)]="term"
     name="term"
     placeholder="Type to search..."
   />
-</div>
+</div> -->
+
+<mat-form-field appearance="fill">
+  <mat-label>Search</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. s20" #input />
+  <mat-icon matPrefix>search</mat-icon>
+</mat-form-field>
 <!-- change the productList to products in the ngFor for the custom pagination.
 Use productList for ngx-pagination Module
 -->
 <div class="row">
-  <div
-    class="col-md-4"
-    *ngFor="
-      let product of productList
-        | filter : term
-        | paginate : { itemsPerPage: 6, currentPage: p }
-    "
-    #someVar
-  >
+  <div class="col-md-4" *ngFor="let product of obs | async" #someVar>
     <app-product-item
       [productItem]="product"
       [addedToWishlist]="wishlist.indexOf(product.id) >= 0"
@@ -91,11 +89,18 @@ Use productList for ngx-pagination Module
   </div>
 </div>
 
-<pagination-controls
+<!-- <pagination-controls
   *ngIf="filteredItems?.length != 0"
   class="my-pagination"
   (pageChange)="p = $event"
   (pageChange)="loadWishlist()"
   align="center"
   style="font-size: large; color: rgb(60, 60, 60)"
-></pagination-controls>
+></pagination-controls> -->
+
+<mat-paginator
+  [pageSizeOptions]="[6, 12, 24]"
+  showFirstLastButtons
+  aria-label="Select page of periodic elements"
+>
+</mat-paginator>

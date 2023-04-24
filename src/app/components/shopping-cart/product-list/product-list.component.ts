@@ -4,10 +4,13 @@ import { FiltermessengerService } from './../../../services/filtermessenger.serv
 import { User } from 'src/app/models/user';
 import { WishlistService } from './../../../services/wishlist.service';
 import { Product } from './../../../models/product';
-import { AfterContentChecked, Component, OnInit, ViewChildren, ChangeDetectorRef } from '@angular/core';
+import { AfterContentChecked, Component, OnInit, ViewChildren, ChangeDetectorRef, ViewChild } from '@angular/core';
 
 import { ProductService } from 'src/app/services/product.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -40,6 +43,10 @@ export class ProductListComponent implements OnInit, AfterContentChecked {
   term!: string
   p:number=1;
 
+  dataSource = new MatTableDataSource<Product>();
+  obs!: Observable<any>;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+
   @ViewChildren('someVar') filteredItems: any;
 
   constructor(private productService: ProductService,
@@ -47,6 +54,7 @@ export class ProductListComponent implements OnInit, AfterContentChecked {
     private filtermsg: FiltermessengerService,
     private resetpricefiltermsg: ResetpricefiltermessengerService,
     public jwtHelper: JwtHelperService,
+    private changeDetectorRef: ChangeDetectorRef,
     private changeDetector: ChangeDetectorRef,
   ) { }
 
@@ -70,6 +78,10 @@ export class ProductListComponent implements OnInit, AfterContentChecked {
       this.selectedPage=1
 
       this.productList = data;
+      this.changeDetectorRef.detectChanges();
+      this.dataSource.data=data;
+      this.dataSource.paginator=this.paginator;
+      this.obs = this.dataSource.connect();
       // for normal pagination
       this.productListLength = this.productList.length;
       let pageIndex = (this.selectedPage - 1) * this.productsPerPage;
@@ -80,6 +92,12 @@ export class ProductListComponent implements OnInit, AfterContentChecked {
       this.pageNumbers=Array(Math.ceil(this.productListLength / this.productsPerPage)).fill(0).map((x, i) => i + 1);
 
     });
+  }
+
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   //for normal pagination functions
@@ -165,6 +183,10 @@ export class ProductListComponent implements OnInit, AfterContentChecked {
       this.filterSelectedPage=1
       this.productService.getProductByPrice(this.filter.start, this.filter.end).subscribe((data) => {
         this.productList = data;
+        this.changeDetectorRef.detectChanges();
+        this.dataSource.data=data;
+        this.dataSource.paginator=this.paginator;
+        this.obs = this.dataSource.connect();
         // for filter pagination
         this.isfilter=true;
         this.filterProductListLength = this.productList.length;

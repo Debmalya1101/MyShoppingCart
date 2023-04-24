@@ -2,7 +2,7 @@
     margin-right: 10px;
 }
 
-.searchC{
+/* .searchC{
     padding-left: .7rem;
     padding-right: .7rem;
     padding-bottom: .7rem;
@@ -24,16 +24,20 @@ input{
 }
 
 .my-pagination ::ng-deep .ngx-pagination :hover {
-  /* background: #c9d6e9; */
   border-radius: 0.2rem;
 }
 
 .my-pagination ::ng-deep .ngx-pagination a, .ngx-pagination button{
   text-decoration: none;
-}
+} */
 
 .noRecord{
   padding: 2rem 2rem 2rem 4rem;
   font-weight: bold;
   font-size: large;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
 }

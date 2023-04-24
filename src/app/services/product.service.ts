@@ -49,6 +49,10 @@ export class ProductService {
     return this.http.delete<Product>("http://localhost:8080/products/"+product.id);
   }
 
+  // deleteMultipleProduct(ids:number[]){
+  //   return this.http.delete<number[]>("http://localhost:8080/products",{ body:ids});
+  // }
+
   getProductByPrice(start:number,end:number){
     return this.http.get<Product[]>("http://localhost:8080/products/"+start+"/"+end);
   }
