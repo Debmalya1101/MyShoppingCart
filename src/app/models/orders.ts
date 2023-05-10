@@ -1,7 +1,7 @@
 export class Orders {
     orderId!: number;
     userId!: number;
-    orderDate!: String;
+    orderDate!: Date;
     products!: String;
     total!: number;
     name!:String;

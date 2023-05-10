@@ -1,0 +1,32 @@
+<app-nav></app-nav>
+
+<div class="graphs">
+  <mat-card class="example-card">
+    <figure class="highcharts-figure">
+      <mat-form-field appearance="fill">
+        <mat-label>{{ year }}</mat-label>
+        <mat-select [(value)]="year" (valueChange)="loadYearlyChart(year)">
+          <mat-option value="2023">2023</mat-option>
+          <mat-option value="2022">2022</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div id="container"></div>
+      <p class="highcharts-description">
+        Chart showing use of rotated axis labels and data labels. This can be a
+        way to include more labels in the chart, but note that more labels can
+        sometimes make charts harder to read.
+      </p>
+    </figure>
+  </mat-card>
+
+  <mat-card class="example-card">
+    <figure class="highcharts-figure">
+      <div id="container1"></div>
+      <p class="highcharts-description">
+        Pie charts are very popular for showing a compact overview of a
+        composition or comparison. While they can be harder to read than column
+        charts, they remain a popular choice for small datasets.
+      </p>
+    </figure>
+  </mat-card>
+</div>

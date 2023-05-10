@@ -28,4 +28,33 @@
 
 img{
     object-fit: contain;
+    max-height: 550px;
+}
+
+mat-card{
+    margin: 1% 3%;
+}
+
+.first{
+    width: 40%;
+}
+.second{
+    width: 60%;
+    padding-left: 4%;
+}
+
+@media screen and (max-width:999px) {
+    .first,
+    .second{
+        width: 100%;
+        height: auto;
+    }
+    
+}
+
+@media screen and (min-width:1000px) and (max-width:1250px) {
+    img{
+        min-height: 630px;
+    }
+    
 }

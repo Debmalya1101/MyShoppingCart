@@ -48,7 +48,10 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatCardModule} from '@angular/material/card';
 import {MatSelectModule} from '@angular/material/select';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatExpansionModule} from '@angular/material/expansion';
 import { ConfirmdialogComponent } from './components/confirmdialog/confirmdialog.component';
+import { SaleschartComponent } from './components/adminhome/saleschart/saleschart.component';
 
 
 @NgModule({
@@ -77,6 +80,7 @@ import { ConfirmdialogComponent } from './components/confirmdialog/confirmdialog
     AdminhomeComponent,
     DialogComponent,
     ConfirmdialogComponent,
+    SaleschartComponent,
   ],
   imports: [
     BrowserModule,
@@ -89,8 +93,10 @@ import { ConfirmdialogComponent } from './components/confirmdialog/confirmdialog
     MatTableModule,
     MatButtonModule,
     MatDialogModule,
+    MatToolbarModule,
     MatIconModule,
     MatCheckboxModule,
+    MatExpansionModule,
     MatSelectModule,
     MatCardModule,
     MatFormFieldModule,

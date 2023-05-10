@@ -28,6 +28,7 @@ export class ProductDetailsComponent implements OnInit {
     this.cartService.addProductToCart(this.product,this.user).subscribe();
     this.toastr.success('Item has been added to the Cart','',{
       timeOut:2500,
+      positionClass: 'toast-bottom-center',
       closeButton: true,
       progressBar: true,
     })

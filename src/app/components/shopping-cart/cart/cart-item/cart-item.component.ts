@@ -32,6 +32,7 @@ export class CartItemComponent implements OnInit {
       this.mes.sendMsg(this.p)
       this.toastr.warning('', 'Item has been removed from Cart',{
         timeOut:2500,
+        positionClass: 'toast-bottom-center',
         closeButton: true,
         progressBar: true,
       });

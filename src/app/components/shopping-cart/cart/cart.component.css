@@ -6,9 +6,9 @@
 }
 
 .mty{
-    height: 38vh;
+    height: 35vh;
     text-align: center;
-    padding-top: 140px;
+    padding-top: 6rem;
     font-weight: bold;
 }
 
@@ -23,4 +23,33 @@
     overflow-y: scroll;
     overflow-x: hidden;
 
+}
+
+
+mat-card{
+    padding: 0%;
+}
+
+mat-card-header{
+    background-color: rgb(243, 243, 243);
+    padding: .4rem;
+}
+mat-card-content{
+    margin: 0%;
+}
+
+mat-card-actions{
+    margin: 0%;
+    align-content: center;
+    padding: 2%;
+}
+.mat-card>.mat-card-actions:last-child {
+    margin-bottom: 0px;
+    padding-bottom: 2%;
+}
+
+
+/* Css for the total part, as the dropdown was going beneth the total */
+.list-group-item.active {
+    z-index: 0;
 }

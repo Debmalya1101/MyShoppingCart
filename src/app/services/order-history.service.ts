@@ -1,3 +1,4 @@
+import { GraphData } from './../models/graph-data';
 import { Orders } from './../models/orders';
 import { User } from './../models/user';
 import { CartItem } from './../models/cart-item';
@@ -20,5 +21,13 @@ export class OrderHistoryService {
 
   getOrderHistory(user:User):Observable<Orders[]>{
     return this.http.get<Orders[]>("http://localhost:8080/myorders/"+user.id);
+  }
+
+  getAllorders():Observable<Orders[]>{
+    return this.http.get<Orders[]>("http://localhost:8080/myorders");
+  }
+
+  getOrdersCountOfMonthPerTear(year:number):Observable<GraphData[]>{
+    return this.http.get<GraphData[]>("http://localhost:8080/myorders/graphData?year="+year);
   }
 }

@@ -1,3 +1,4 @@
+import { SaleschartComponent } from './components/adminhome/saleschart/saleschart.component';
 import { AdminhomeComponent } from './components/adminhome/adminhome.component';
 import { AuthGuard } from './components/shared/auth/auth.guard';
 import { ProductDetailsComponent } from './components/shopping-cart/product-details/product-details.component';
@@ -42,6 +43,9 @@ const routes : Routes = [
         roles:["ROLE_ADMIN", "ROLE_USER"]
     }},
     {path:'admin', component:AdminhomeComponent, canActivate:[AuthGuard],data:{
+        roles:["ROLE_ADMIN"]
+    }},
+    {path:'sales', component:SaleschartComponent, canActivate:[AuthGuard],data:{
         roles:["ROLE_ADMIN"]
     }},
     {path:'**', component:PageNotFoundComponent}

@@ -16,6 +16,7 @@ export class PaymentsuccessComponent implements OnInit {
   afterClick(){
     this.toastr.info('Go to My Orders to track orders','Order Placed!',{
       timeOut:3000,
+      positionClass: 'toast-bottom-center',
       closeButton: true,
       progressBar: true,
     })

@@ -12,6 +12,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 export class OrdersComponent implements OnInit {
 
   orders!:Orders[]
+  testorder!:Orders[]
   user!:User
 
   p: number = 1;

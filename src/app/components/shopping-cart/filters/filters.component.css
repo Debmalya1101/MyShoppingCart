@@ -1,0 +1,12 @@
+mat-card{
+    padding: 0 0 .7rem 0;
+}
+
+mat-card-header{
+    background-color: rgb(243, 243, 243);
+    padding: .4rem;
+}
+
+mat-card-content{
+    margin: 5%;
+}

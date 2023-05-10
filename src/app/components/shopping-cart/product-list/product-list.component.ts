@@ -11,6 +11,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { Observable } from 'rxjs';
+import { MessengerService } from 'src/app/services/messenger.service';
 
 
 @Component({
@@ -51,6 +52,7 @@ export class ProductListComponent implements OnInit, AfterContentChecked {
 
   constructor(private productService: ProductService,
     private wishlistService: WishlistService,
+    private msg:MessengerService,
     private filtermsg: FiltermessengerService,
     private resetpricefiltermsg: ResetpricefiltermessengerService,
     public jwtHelper: JwtHelperService,
@@ -82,14 +84,6 @@ export class ProductListComponent implements OnInit, AfterContentChecked {
       this.dataSource.data=data;
       this.dataSource.paginator=this.paginator;
       this.obs = this.dataSource.connect();
-      // for normal pagination
-      this.productListLength = this.productList.length;
-      let pageIndex = (this.selectedPage - 1) * this.productsPerPage;
-      this.products = this.productList.slice(pageIndex, this.productsPerPage);
-      //for filter pagination
-      this.isfilter=false
-
-      this.pageNumbers=Array(Math.ceil(this.productListLength / this.productsPerPage)).fill(0).map((x, i) => i + 1);
 
     });
   }
@@ -100,65 +94,6 @@ export class ProductListComponent implements OnInit, AfterContentChecked {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  //for normal pagination functions
-  changePageSize(event: Event) {
-    const newSize = (event.target as HTMLInputElement).value
-    this.productsPerPage = Number(newSize);
-    this.changePage(1)
-  }
-
-  // get pageNumbers(): number[] {
-  //   // console.log(this.productListLength)
-  //   return Array(Math.ceil(this.productListLength / this.productsPerPage))
-  //     .fill(0).map((x, i) => i + 1);
-  // }
-
-  changePage(page: any) {
-    this.selectedPage = page;
-    this.slicedProducts();
-  }
-
-  slicedProducts() {
-    let pageIndex = (this.selectedPage - 1) * this.productsPerPage;
-    let endIndex = (this.selectedPage - 1) * this.productsPerPage + this.productsPerPage;
-    this.products = [];
-    this.productService.getProducts().subscribe(data => {
-      this.productList = data;
-      this.products = this.productList.slice(pageIndex, endIndex);
-    })
-    this.loadWishlist();
-
-  }
-  //normal pagination functions list end here
-
-
-  //functions for filter pagination
-  filterChangePageSize(event: Event) {
-    const newSize = (event.target as HTMLInputElement).value
-    this.filterProductsPerPage = Number(newSize);
-    this.filterChangePage(1)
-  }
-
-  get filterPageNumbers(): number[] {
-    return Array(Math.ceil(this.filterProductListLength / this.filterProductsPerPage))
-      .fill(0).map((x, i) => i + 1);
-  }
-
-  filterChangePage(page: any) {
-    this.filterSelectedPage = page;
-    this.filterSlicedProducts();
-  }
-
-  filterSlicedProducts() {
-    let pageIndex = (this.filterSelectedPage - 1) * this.filterProductsPerPage;
-    let endIndex = (this.filterSelectedPage - 1) * this.filterProductsPerPage + this.filterProductsPerPage;
-    this.products = [];
-    this.productService.getProductByPrice(this.filter.start, this.filter.end).subscribe((data) => {
-      this.productList = data;
-      this.products = this.productList.slice(pageIndex, endIndex);
-    })
-  }
-  //ends
 
 
   //wishlist function
@@ -180,18 +115,12 @@ export class ProductListComponent implements OnInit, AfterContentChecked {
   handleFilterMsg() {
     this.filtermsg.getMsg().subscribe((data: any) => {
       this.filter = data;
-      this.filterSelectedPage=1
       this.productService.getProductByPrice(this.filter.start, this.filter.end).subscribe((data) => {
         this.productList = data;
         this.changeDetectorRef.detectChanges();
         this.dataSource.data=data;
         this.dataSource.paginator=this.paginator;
         this.obs = this.dataSource.connect();
-        // for filter pagination
-        this.isfilter=true;
-        this.filterProductListLength = this.productList.length;
-        let pageIndex = (this.filterSelectedPage - 1) * this.filterProductsPerPage;
-        this.products = this.productList.slice(pageIndex, this.filterProductsPerPage);
 
         this.loadWishlist();
       })
@@ -203,6 +132,10 @@ export class ProductListComponent implements OnInit, AfterContentChecked {
       this.getProducts();
       this.loadWishlist();
     })
+  }
+
+  public onChangeLoadWishList(event: MouseEvent){
+    this.loadWishlist()
   }
 
 }

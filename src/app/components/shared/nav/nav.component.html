@@ -1,23 +1,66 @@
-<div class="d-flex flex-column flex-md-row align-items-center py-1 ps-3 mb-4 border-bottom bg-dark bg-gradient bg-opacity-80">
-    <app-header></app-header>
+<!-- <div
+  class="d-flex flex-column flex-md-row align-items-center py-1 ps-3 mb-4 border-bottom bg-dark bg-gradient bg-opacity-80"
+>
+  <app-header></app-header>
 
-    <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto navfont">
-      <!-- <a class="me-3 py-2 text-white text-decoration-none" [routerLink]="['/shop']">Features</a>
-      <a class="me-3 py-2 text-white text-decoration-none" [routerLink]="['/shop']">Enterprise</a>
-      <a class="me-3 py-2 text-white text-decoration-none" [routerLink]="['/shop']">Support</a>
-      <a class="me-3 py-2 text-white text-decoration-none" [routerLink]="['/shop']">Pricing</a> -->
-      <!-- <a class="me-3 py-2 text-white text-decoration-none"><i class="fa fa-user-circle" aria-hidden="true">{{user.userName}}</i></a> -->
-      <div class="dropdown me-3 py-2 text-white text-decoration-none" style="float:right;">
-        <span class="dropbtn"><i class='fas fa-user-circle'></i> {{user.userName}}</span>
-        <div class="dropdown-content">
-          <a [routerLink]="['/shop']"><i class="fa fa-home"></i> Home</a>
-          <a [routerLink]="['/profile']"><i class='fas fa-user-alt'></i> Profile</a>
-          <a [routerLink]="['/myorders']"><i class='fas fa-shopping-cart'></i> My Orders</a>
-          <a class="text-dark text-decoration-none" [routerLink]="['/login']" (click)="loggedOutUser()"><i class="fa fa-sign-out"></i> Logout</a>
-        </div>
+  <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto navfont">
+    <div
+      class="dropdown me-3 py-2 text-white text-decoration-none"
+      style="float: right"
+    >
+      <span class="dropbtn"
+        ><i class="fas fa-user-circle"></i> {{ user.userName }}</span
+      >
+      <div class="dropdown-content">
+        <a [routerLink]="['/shop']"><i class="fa fa-home"></i> Home</a>
+        <a *ngIf="user.role == 'ROLE_ADMIN'" [routerLink]="['/admin']"
+          ><i class="fas fa-user-cog"></i> Admin Home</a
+        >
+        <a *ngIf="user.role == 'ROLE_ADMIN'" [routerLink]="['/sales']"
+          ><i class="fa fa-line-chart"></i> Statistics</a
+        >
+        <a [routerLink]="['/profile']"
+          ><i class="fas fa-user-alt"></i> Profile</a
+        >
+        <a [routerLink]="['/myorders']"
+          ><i class="fas fa-shopping-cart"></i> My Orders</a
+        >
+        <a
+          class="text-dark text-decoration-none"
+          [routerLink]="['/login']"
+          (click)="loggedOutUser()"
+          ><i class="fa fa-sign-out"></i> Logout</a
+        >
       </div>
-      <!-- <a class="me-3 py-2 text-white text-decoration-none" [routerLink]="['/login']" (click)="loggedOutUser()"><i class="fa fa-sign-out"></i> Logout</a> -->
-    </nav>
-    <!-- <a class="btn btn-outline-primary" [routerLink]="['/register']">Sign Up</a>
-    <a class="btn btn-outline-secondary" [routerLink]="['/login']">Login</a> -->
-</div>
+    </div>
+  </nav>
+</div> -->
+
+<mat-toolbar class="bg-dark bg-gradient bg-opacity-80">
+  <app-header></app-header>
+  <span class="example-spacer"></span>
+  <div class="dropdown text-white text-decoration-none" style="float: right">
+    <span class="dropbtn"
+      ><i class="fas fa-user-circle"></i> {{ user.userName }}
+    </span>
+    <div class="dropdown-content">
+      <a [routerLink]="['/shop']"><i class="fa fa-home"></i> Home</a>
+      <a *ngIf="user.role == 'ROLE_ADMIN'" [routerLink]="['/admin']"
+        ><i class="fas fa-user-cog"></i> Admin Home</a
+      >
+      <a *ngIf="user.role == 'ROLE_ADMIN'" [routerLink]="['/sales']"
+        ><i class="fa fa-line-chart"></i> Statistics</a
+      >
+      <a [routerLink]="['/profile']"><i class="fas fa-user-alt"></i> Profile</a>
+      <a [routerLink]="['/myorders']"
+        ><i class="fas fa-shopping-cart"></i> My Orders</a
+      >
+      <a
+        class="text-dark text-decoration-none"
+        [routerLink]="['/login']"
+        (click)="loggedOutUser()"
+        ><i class="fa fa-sign-out"></i> Logout</a
+      >
+    </div>
+  </div>
+</mat-toolbar>
