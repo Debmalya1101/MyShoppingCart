@@ -1,5 +1,8 @@
 
 /* this css property is for the products list */
+.productTable{
+  min-width: 280px;
+}
 
 table {
   width: 100% !important;
